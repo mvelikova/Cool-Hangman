@@ -1,0 +1,6 @@
+﻿  GameMenu.cpp
+  InputReader.cpp
+  Helpers.cpp
+  Console.cpp
+  Generating Code...
+LINK : fatal error LNK1168: cannot open D:\Github\University-Works\DataStructures\Exercises\Hangman\Debug\Hangman.exe for writing
