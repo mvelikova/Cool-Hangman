@@ -118,6 +118,7 @@
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="GameStarter.cpp" />
     <ClCompile Include="Helpers.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="GameMenu.cpp" />
@@ -128,7 +129,10 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="GameStarter.h" />
+    <ClInclude Include="GameType.h" />
     <ClInclude Include="Helpers.h" />
+    <ClInclude Include="IDrawable.h" />
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="StatisticsManager.h" />

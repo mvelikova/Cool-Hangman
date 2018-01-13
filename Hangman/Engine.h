@@ -9,11 +9,7 @@ public:
 	~Engine();
 	void Run();
 
-
-
 private:
 	std::vector<std::string> words;
-
-	void ReadWordsFromFile();
 };
 

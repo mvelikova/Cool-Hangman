@@ -1,10 +1,22 @@
 #pragma once
-class GameMenu
+#include "IDrawable.h"
+#include <string>
+#include <vector>
+#include "GameStarter.h"
+
+class GameMenu : public IDrawable
 {
 public:
 	GameMenu();
+	GameMenu(GameStarter* game_starter);
 	~GameMenu();
 
 	void Start();
+	void Draw() override;
+
+private:
+	GameStarter* game_starter;
+	std::vector<std::string> menu_options;
+	void DrawMenuOptions(int selectedOption = 0);
 };
 

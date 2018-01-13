@@ -5,8 +5,8 @@
 #include "Constants.h"
 #include <thread>
 #include <future>
-#include <chrono>
 #include "StatisticsManager.h"
+#include "GameMenu.h"
 
 
 Engine::Engine()
@@ -22,17 +22,18 @@ Engine::~Engine()
 
 void Engine::Run()
 {
-	std::cout << "Start game" << std::endl;
+	StatisticsManager sm;
 
 	std::string path = "..\\" + Constants::DictionaryFilePath;
 	std::ifstream ifs(path);
-
 	InputReader* reader = new InputReader(ifs);
 
 	auto f = std::async(std::launch::async, &InputReader::WriteAll, reader);
-
 	std::vector<std::string> words = f.get();
-	StatisticsManager sm;
+
+	std::cout << "Starting..." << std::endl;
+	GameMenu* menu = new GameMenu();
+	menu->Start();
 
 	delete reader;
 }

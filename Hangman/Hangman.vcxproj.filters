@@ -25,6 +25,12 @@
     <Filter Include="Header Files\Services">
       <UniqueIdentifier>{04de39d8-b826-48e0-b94a-9202e4ae2835}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Contracts">
+      <UniqueIdentifier>{8b19f023-71e4-4867-92f9-309828270433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enums">
+      <UniqueIdentifier>{524090df-e09e-4054-b0c3-1b3f08b5d5cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -51,6 +57,9 @@
     <ClCompile Include="InputReader.cpp">
       <Filter>Source Files\Services</Filter>
     </ClCompile>
+    <ClCompile Include="GameStarter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -73,6 +82,15 @@
     </ClInclude>
     <ClInclude Include="InputReader.h">
       <Filter>Header Files\Services</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStarter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameType.h">
+      <Filter>Header Files\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Header Files\Contracts</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
