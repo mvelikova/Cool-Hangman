@@ -27,9 +27,11 @@ void GameStarter::Start(const GameType gameType)
 			break;
 		case PlayerGuessing:
 		default:
-			game = new PlayerGame("", GameLevel::Easy);
+			std::string word = "pishka";
+			game = new PlayerGame(word, GameLevel::Easy);
 			break;
 	}
+	game->Run();
 
 	delete game;
 }

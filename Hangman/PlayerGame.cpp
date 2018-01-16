@@ -14,14 +14,20 @@ PlayerGame::~PlayerGame()
 void PlayerGame::Run()
 {
 	BaseGame::Run();
-	//game logic
-}
+	this->Draw();
 
+
+	guesser->Initialize();
+
+	//game logic
+	std::cout << guesser->GetHiddenWord() << std::endl;
+
+}
 void PlayerGame::Draw()
 {
 	std::cout << "Player guessing (" << this->game_level << ")" << std::endl;
-	std::cout << "Points: " << this->points << std::endl;
-	std::cout << "Time elapsed: " << this->get_current_seconds_elapsed() << std::endl;
+//	std::cout << "Points: " << this->points << std::endl;
+//	std::cout << "Time elapsed: " << this->get_current_seconds_elapsed() << std::endl;
 }
 
 void PlayerGame::EndGame()

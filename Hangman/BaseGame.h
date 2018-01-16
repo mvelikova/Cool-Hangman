@@ -10,6 +10,7 @@ class BaseGame : public IRunnable, public IDrawable
 public:
 	virtual ~BaseGame();
 	virtual double get_current_seconds_elapsed();
+	virtual void Run() override;
 
 protected:
 	BaseGame(std::string word = "", GameLevel game_level = GameLevel::Easy);
@@ -21,8 +22,7 @@ protected:
 	clock_t begin;
 	clock_t end;
 
-	virtual void Run() override;
-	void Draw() override = 0;
+	virtual void Draw() = 0;
 	virtual void EndGame();
 
 private:

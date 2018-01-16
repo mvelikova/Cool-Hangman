@@ -9,7 +9,7 @@ public:
 
 	virtual void Run() override;
 	virtual void Draw() override;
-
+	std::string ChooseWord();
 protected:
 	void EndGame() override;
 

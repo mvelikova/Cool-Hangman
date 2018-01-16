@@ -13,7 +13,7 @@ CpuGame::~CpuGame()
 void CpuGame::Run()
 {
 	BaseGame::Run();
-	//game logic
+	this->Draw();
 }
 
 void CpuGame::Draw()
