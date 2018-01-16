@@ -22,7 +22,7 @@ GameMenu::~GameMenu()
 	delete this->game_starter;
 }
 
-void GameMenu::Start()
+void GameMenu::Run()
 {
 	//draw menu on screen
 	Console::Clear();

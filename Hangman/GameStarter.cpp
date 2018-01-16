@@ -1,6 +1,9 @@
 #include "GameStarter.h"
 #include "Console.h"
 #include <iostream>
+#include "BaseGame.h"
+#include "CpuGame.h"
+#include "PlayerGame.h"
 
 GameStarter::GameStarter()
 {
@@ -15,13 +18,18 @@ void GameStarter::Start(const GameType gameType)
 {
 	Console::Clear();
 
+	BaseGame* game;
+
 	switch (gameType)
 	{
 		case ComputerGuessing:
-			std::cout << "Computer guessing chosen" << std::endl;
+			game = new CpuGame("",GameLevel::Easy);
 			break;
 		case PlayerGuessing:
-			std::cout << "Player guessing chosen" << std::endl;
+		default:
+			game = new PlayerGame("", GameLevel::Easy);
 			break;
 	}
+
+	delete game;
 }
