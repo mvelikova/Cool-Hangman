@@ -1,16 +1,7 @@
-﻿  PlayerGame.cpp
-  GameStarter.cpp
-c:\users\maria\documents\github\cool-hangman\hangman\cpugame.h(5): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
-  c:\users\maria\documents\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
-  c:\users\maria\documents\github\cool-hangman\hangman\basegame.h(8): note: see declaration of 'BaseGame'
-  CpuGame.cpp
-c:\users\maria\documents\github\cool-hangman\hangman\cpugame.h(5): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
-  c:\users\maria\documents\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
-  c:\users\maria\documents\github\cool-hangman\hangman\basegame.h(8): note: see declaration of 'BaseGame'
+﻿  WordGuesser.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
   StatisticsManager.cpp
   Helpers.cpp
-  GameLevel.h
   Console.cpp
   Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe

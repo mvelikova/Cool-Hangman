@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "GameLevel.h"
+#include <vector>
 
 class WordGuesser
 {
@@ -12,6 +13,7 @@ public:
 	int GetMistakes() const;
 	std::string GetHiddenWord();
 	bool WordIsGuessed();
+	std::vector<int> FindLocation(std::string,char);
 private:
 	int mistakes;
 	std::string word;

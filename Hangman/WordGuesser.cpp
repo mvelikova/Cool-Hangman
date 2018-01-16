@@ -1,5 +1,6 @@
 #include "WordGuesser.h"
 #include "Constants.h"
+#include <iostream>
 
 
 WordGuesser::WordGuesser(std::string word, GameLevel game_level)
@@ -47,22 +48,23 @@ void WordGuesser::Guess(char c)
 		return;
 	}
 	bool isFound = false;
-	std::size_t found = this->word.find(c);
-	
+	std::vector<int> charLocation = FindLocation(this->word,c);
+
 	//find all occurances of this char and update hidden word
-	while (found != std::string::npos)
+	for (int i=0;i<charLocation.size();i++)
 	{
 		isFound = true;
-		this->hidden_word[found] = c;
-
-		found = this->word.find(c);
+			this->hidden_word[charLocation[i]] = c;
+		
 	}
 
-	if (!found)
+
+	if (!isFound)
 	{
 		mistakes++;
 	}
 }
+
 
 int WordGuesser::GetMistakes() const
 {
@@ -81,4 +83,14 @@ bool WordGuesser::WordIsGuessed()
 		return true;
 	}
 	return false;
+}
+
+std::vector<int> WordGuesser::FindLocation(std::string sample, char findIt) 
+{
+	std::vector<int> characterLocations;
+	for (int i = 0; i < sample.size(); i++)
+		if (sample[i] == findIt)
+			characterLocations.push_back(i);
+
+	return characterLocations;
 }
