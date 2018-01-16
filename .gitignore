@@ -1,2 +1,6 @@
 
 .vs/Hangman/v15/Browse.VC.opendb
+.vs/Hangman/v15/Browse.VC.db
+.vs/Hangman/v15/ipch/AutoPCH/21481ad4fd8d9c8/STATISTICSMANAGER.ipch
+.vs/Hangman/v15/ipch/AutoPCH/8db5f0ac1bd125a3/CONSTANTS.ipch
+*.db
