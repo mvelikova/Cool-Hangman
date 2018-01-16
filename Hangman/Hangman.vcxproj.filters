@@ -31,6 +31,12 @@
     <Filter Include="Header Files\Enums">
       <UniqueIdentifier>{524090df-e09e-4054-b0c3-1b3f08b5d5cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Games">
+      <UniqueIdentifier>{1dab44a7-74b4-466c-8384-d430eaf558f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Games">
+      <UniqueIdentifier>{06785983-d1ef-4a67-beaa-6d42b424d87c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -59,6 +65,18 @@
     </ClCompile>
     <ClCompile Include="GameStarter.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CpuGame.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGame.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGame.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLevel.h">
+      <Filter>Header Files\Enums</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +109,18 @@
     </ClInclude>
     <ClInclude Include="IDrawable.h">
       <Filter>Header Files\Contracts</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGame.h">
+      <Filter>Header Files\Contracts</Filter>
+    </ClInclude>
+    <ClInclude Include="IRunnable.h">
+      <Filter>Header Files\Contracts</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerGame.h">
+      <Filter>Header Files\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="CpuGame.h">
+      <Filter>Header Files\Games</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

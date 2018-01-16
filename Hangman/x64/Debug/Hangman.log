@@ -1,12 +1,2 @@
-﻿  StatisticsManager.cpp
-  Source.cpp
-  GameMenu.cpp
-c:\users\maria\documents\github\cool-hangman\hangman\gamemenu.cpp(35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  InputReader.cpp
-  Helpers.cpp
-  GameStarter.cpp
-  Engine.cpp
-  Constants.cpp
-  Console.cpp
-  Generating Code...
-  Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe
+﻿  BaseGame.cpp
+  Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe
