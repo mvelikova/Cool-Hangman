@@ -1,2 +1,14 @@
 ﻿  BaseGame.cpp
+  Generating Code...
+  Compiling...
+  PlayerGame.cpp
+  GameStarter.cpp
+d:\github\cool-hangman\hangman\cpugame.h(5): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
+  d:\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
+  d:\github\cool-hangman\hangman\basegame.h(8): note: see declaration of 'BaseGame'
+  CpuGame.cpp
+d:\github\cool-hangman\hangman\cpugame.h(5): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
+  d:\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
+  d:\github\cool-hangman\hangman\basegame.h(8): note: see declaration of 'BaseGame'
+  Generating Code...
   Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe

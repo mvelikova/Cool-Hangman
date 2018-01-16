@@ -5,19 +5,42 @@
 #include <conio.h>
 #include "Constants.h"
 
-inline void BaseGame::Run()
+BaseGame::BaseGame(std::string word, GameLevel game_level)
 {
+	//initialization
 	this->points = 0;
 	this->secondsElapsed = 0;
-	this->level = this->PickLevel();
+	this->guesser = new WordGuesser(word, game_level);
 
+	this->BaseGame::Run();
+}
+
+BaseGame::~BaseGame()
+{
+	delete this->guesser;
+}
+
+inline void BaseGame::Run()
+{
+	this->game_level = this->PickLevel();
 	this->begin = clock();
+
+	this->Draw();
 }
 
 void BaseGame::EndGame()
 {
 	this->end = clock();
 	this->secondsElapsed = double(end - begin) / CLOCKS_PER_SEC;
+
+	std::cout << "Points: " << this->points << std::endl;
+	std::cout << "Mistakes: " << this->guesser->GetMistakes() << std::endl;
+}
+
+double BaseGame::get_current_seconds_elapsed()
+{
+	clock_t now = clock();
+	return double(now - begin) / CLOCKS_PER_SEC;
 }
 
 GameLevel BaseGame::PickLevel()
@@ -26,7 +49,7 @@ GameLevel BaseGame::PickLevel()
 	PrintLevels(GameLevel::Easy);
 
 	int menuOption = 0;
-	const int options_size = GameLevel::Pro;
+	const int options_size = GameLevel::Pro + 1;
 	char c;
 
 	while (true)
@@ -64,7 +87,7 @@ void BaseGame::PrintLevels(const int current_selection = 0)
 {
 	Console::Clear();
 
-	for (int i = GameLevel::Easy; i != GameLevel::Pro; i++)
+	for (int i = GameLevel::Easy; i != GameLevel::Pro + 1; i++)
 	{
 		GameLevel foo = static_cast<GameLevel>(i);
 
@@ -77,15 +100,4 @@ void BaseGame::PrintLevels(const int current_selection = 0)
 			std::cout << "   " << foo << std::endl;
 		}
 	}
-}
-
-BaseGame::~BaseGame()
-{
-	this->BaseGame::EndGame();
-	std::cout << "WHOLE GAME OBJECT TIME: " << this->secondsElapsed;
-}
-
-BaseGame::BaseGame()
-{
-	this->BaseGame::Run();
 }

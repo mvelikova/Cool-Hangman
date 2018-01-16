@@ -4,13 +4,16 @@
 class CpuGame : public BaseGame, public IDrawable
 {
 public:
-	CpuGame();
+	CpuGame(std::string word, GameLevel game_level);
 	~CpuGame();
 
-	void Run() override;
-	void Draw() override;
+	virtual void Run() override;
+	virtual void Draw() override;
 
 protected:
 	void EndGame() override;
+
+private:
+	CpuGame();
 };
 

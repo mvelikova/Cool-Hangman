@@ -4,13 +4,15 @@
 class PlayerGame : public BaseGame
 {
 public:
-	PlayerGame();
+	PlayerGame(std::string word, GameLevel game_level);
 	~PlayerGame();
 
-	void Run() override;
-	void Draw() override;
+	virtual void Run() override;
+	virtual void Draw() override;
 
 protected:
 	void EndGame() override;
-};
 
+private:
+	PlayerGame();
+};

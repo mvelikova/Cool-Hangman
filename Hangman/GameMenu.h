@@ -3,15 +3,16 @@
 #include <string>
 #include <vector>
 #include "GameStarter.h"
+#include "IRunnable.h"
 
-class GameMenu : public IDrawable
+class GameMenu : public IDrawable, public IRunnable
 {
 public:
 	GameMenu();
 	GameMenu(GameStarter* game_starter);
 	~GameMenu();
 
-	void Start();
+	void Run() override;
 	void Draw() override;
 
 private:

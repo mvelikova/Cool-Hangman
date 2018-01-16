@@ -33,7 +33,7 @@ void Engine::Run()
 
 	std::cout << "Starting..." << std::endl;
 	GameMenu* menu = new GameMenu();
-	menu->Start();
+	menu->Run();
 
 	delete reader;
 }

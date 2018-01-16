@@ -78,6 +78,9 @@
     <ClCompile Include="GameLevel.h">
       <Filter>Header Files\Enums</Filter>
     </ClCompile>
+    <ClCompile Include="WordGuesser.cpp">
+      <Filter>Source Files\Infrastructure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="CpuGame.h">
       <Filter>Header Files\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="WordGuesser.h">
+      <Filter>Header Files\Infrastructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
