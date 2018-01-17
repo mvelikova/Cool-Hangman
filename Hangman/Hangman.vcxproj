@@ -127,8 +127,8 @@
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="PlayerGame.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="StatisticsManager.cpp" />
     <ClCompile Include="WordGuesser.cpp" />
+    <ClCompile Include="WordsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
@@ -144,8 +144,8 @@
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="IRunnable.h" />
     <ClInclude Include="PlayerGame.h" />
-    <ClInclude Include="StatisticsManager.h" />
     <ClInclude Include="WordGuesser.h" />
+    <ClInclude Include="WordsManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

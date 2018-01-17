@@ -1,7 +1,2 @@
-﻿  WordGuesser.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  StatisticsManager.cpp
-  Helpers.cpp
-  Console.cpp
-  Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe
+﻿  PlayerGame.cpp
+  Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe

@@ -13,7 +13,8 @@ public:
 	int GetMistakes() const;
 	std::string GetHiddenWord();
 	bool WordIsGuessed();
-	std::vector<int> FindLocation(std::string,char);
+	std::vector<int> IndexesOf(std::string word, char a);
+
 private:
 	int mistakes;
 	std::string word;

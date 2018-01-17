@@ -9,6 +9,7 @@ WordGuesser::WordGuesser(std::string word, GameLevel game_level)
 	this->game_level = game_level;
 	std::string hidden(word.size(), WORD_GUESSER_HIDDEN_CHAR);
 	this->hidden_word = hidden;
+	this->mistakes = 0;
 }
 
 
@@ -24,17 +25,14 @@ void WordGuesser::Initialize()
 	switch (this->game_level)
 	{
 	case Easy:
-		
 		Guess(firstLetter);
 		Guess(lastLetter);
 		mistakes = 0;
 		break;
 	case Advanced:
-		
 		Guess(firstLetter);
 		break;
 	case Pro:
-		break;
 	default:
 		break;
 	}
@@ -48,14 +46,13 @@ void WordGuesser::Guess(char c)
 		return;
 	}
 	bool isFound = false;
-	std::vector<int> charLocation = FindLocation(this->word,c);
+	std::vector<int> charLocation = IndexesOf(this->word, c);
 
 	//find all occurances of this char and update hidden word
-	for (int i=0;i<charLocation.size();i++)
+	for (int i = 0; i < charLocation.size(); i++)
 	{
 		isFound = true;
-			this->hidden_word[charLocation[i]] = c;
-		
+		this->hidden_word[charLocation[i]] = c;
 	}
 
 
@@ -85,12 +82,19 @@ bool WordGuesser::WordIsGuessed()
 	return false;
 }
 
-std::vector<int> WordGuesser::FindLocation(std::string sample, char findIt) 
+/**
+ * \brief Gets the index locations of a character inside a word
+ * \param word 
+ * \param a 
+ * \return 
+ */
+std::vector<int> WordGuesser::IndexesOf(std::string word, char a)
 {
-	std::vector<int> characterLocations;
-	for (int i = 0; i < sample.size(); i++)
-		if (sample[i] == findIt)
-			characterLocations.push_back(i);
+	std::vector<int> indexes;
 
-	return characterLocations;
+	for (int i = 0; i < word.size(); i++)
+		if (word[i] == a)
+			indexes.push_back(i);
+
+	return indexes;
 }

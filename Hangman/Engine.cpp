@@ -5,14 +5,13 @@
 #include "Constants.h"
 #include <thread>
 #include <future>
-#include "StatisticsManager.h"
 #include "GameMenu.h"
+#include "WordsManager.h"
+#include "Helpers.h"
 
 
 Engine::Engine()
 {
-	std::vector<std::string> w;
-	this->words = w;
 }
 
 
@@ -22,17 +21,16 @@ Engine::~Engine()
 
 void Engine::Run()
 {
-	StatisticsManager sm;
-
 	std::string path = "..\\" + Constants::DictionaryFilePath;
 	std::ifstream ifs(path);
 	InputReader* reader = new InputReader(ifs);
 
 	auto f = std::async(std::launch::async, &InputReader::WriteAll, reader);
-	std::vector<std::string> words = f.get();
+	Helpers::all_words = f.get();
 
 	std::cout << "Starting..." << std::endl;
-	GameMenu* menu = new GameMenu();
+
+	GameMenu* menu = new GameMenu(new GameStarter());
 	menu->Run();
 
 	delete reader;

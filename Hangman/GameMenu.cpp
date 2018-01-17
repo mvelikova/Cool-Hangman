@@ -5,15 +5,11 @@
 #include <conio.h>
 #include <iostream>
 
-GameMenu::GameMenu(): game_starter(new GameStarter())
+GameMenu::GameMenu(GameStarter* game_starter): game_starter(game_starter)
 {
 	this->menu_options = {
 		"Guess word", "Let computer guess your word"
 	};
-}
-
-GameMenu::GameMenu(GameStarter* game_starter): game_starter(game_starter)
-{
 }
 
 
@@ -77,6 +73,10 @@ void GameMenu::Draw()
 
 	this->game_starter->Start(static_cast<GameType>(menuOption));
 
+}
+
+GameMenu::GameMenu()
+{
 }
 
 void GameMenu::DrawMenuOptions(int selectedOption)

@@ -1,10 +1,10 @@
 #include "CpuGame.h"
 #include <iostream>
 
-CpuGame::CpuGame(std::string word, GameLevel game_level) : BaseGame(word,game_level)
+CpuGame::CpuGame(GameLevel game_level)
 {
+	this->game_level = game_level;
 }
-
 
 CpuGame::~CpuGame()
 {

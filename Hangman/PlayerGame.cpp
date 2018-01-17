@@ -16,7 +16,6 @@ void PlayerGame::Run()
 	BaseGame::Run();
 	this->Draw();
 
-
 	guesser->Initialize();
 
 	//game logic

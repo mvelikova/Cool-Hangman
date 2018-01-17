@@ -23,7 +23,7 @@ void GameStarter::Start(const GameType gameType)
 	switch (gameType)
 	{
 		case ComputerGuessing:
-			game = new CpuGame("",GameLevel::Easy);
+			game = new CpuGame(GameLevel::Easy);
 			break;
 		case PlayerGuessing:
 		default:

@@ -8,7 +8,6 @@
 class GameMenu : public IDrawable, public IRunnable
 {
 public:
-	GameMenu();
 	GameMenu(GameStarter* game_starter);
 	~GameMenu();
 
@@ -16,6 +15,8 @@ public:
 	void Draw() override;
 
 private:
+	GameMenu();
+
 	GameStarter* game_starter;
 	std::vector<std::string> menu_options;
 	void DrawMenuOptions(int selectedOption = 0);

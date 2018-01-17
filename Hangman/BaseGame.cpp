@@ -7,12 +7,11 @@
 
 BaseGame::BaseGame(std::string word, GameLevel game_level)
 {
-	//initialization
+	//Initialization
 	this->points = 0;
 	this->secondsElapsed = 0;
 	this->guesser = new WordGuesser(word, game_level);
-
-	//this->BaseGame::Run();
+	this->game_level = game_level;
 }
 
 BaseGame::~BaseGame()
@@ -24,8 +23,6 @@ inline void BaseGame::Run()
 {
 	this->game_level = this->PickLevel();
 	this->begin = clock();
-
-	
 }
 
 void BaseGame::EndGame()

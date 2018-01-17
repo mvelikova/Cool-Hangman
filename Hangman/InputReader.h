@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <string>
+#include <set>
 
 class InputReader
 {
@@ -9,5 +9,5 @@ private:
 public:
 	InputReader(std::ifstream& istream);
 	~InputReader();
-	std::vector<std::string> WriteAll() const;
+	std::set<std::string> WriteAll() const;
 };
