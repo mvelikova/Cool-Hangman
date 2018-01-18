@@ -9,7 +9,7 @@
 #define ENTER 13
 
 #define WORD_GUESSER_HIDDEN_CHAR '_'
-#define ACCEPTABLE_ERRORS 7
+#define ACCEPTABLE_ERRORS 6
 
 #define CONSOLE_WIDTH 100
 #define CONSOLE_HEIGHT 60
@@ -21,7 +21,11 @@ public:
 	static const std::vector<std::string> HangmanHead;
 	static const std::vector<std::string> HangmanHands;
 	static const std::vector<std::string> HangmanLegs;
-	
+	static const std::vector<std::string> Gibbet1;
+	static const std::vector<std::string> Gibbet2;
+	static const std::vector<std::string> Gibbet3;
+	static const std::vector<std::string> Gibbet4;
+
 
 private:
 	// Disallow creating an instance of this object

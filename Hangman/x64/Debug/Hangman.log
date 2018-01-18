@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Engine.cpp
   Generating Code...
   Compiling...
@@ -9,3 +10,7 @@ d:\github\cool-hangman\hangman\gamemenu.cpp(31): warning C4267: 'initializing': 
   Skipping... (no relevant changes detected)
   GameLevel.h
   Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe
+=======
+﻿  BaseGame.cpp
+  Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe
+>>>>>>> 5370b5a6fa1faf2a7ca21bec6fc7eea2c4dba949

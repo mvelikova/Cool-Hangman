@@ -30,6 +30,10 @@ void PlayerGame::Run()
 
 		Turn();
 	}
+	if (guesser->AllMistakesAreMade())
+	{
+		Draw();
+	}
 	//game logic
 	
 
@@ -41,21 +45,25 @@ void PlayerGame::Draw()
 	guesser->DisplayUsedLetters();
 		std::cout << guesser->word << std::endl; //TODO: make word private again
 	std::cout << guesser->GetMistakes() << std::endl;
-	if (guesser->GetMistakes()==1)
-	{
-		int x = 10;
-		int y = 0;
-		for (auto line : Constants::HangmanHead)
-		{
-			Console::SetCursorPosition(x, y);
-			std::cout << line;
-			y++;
-		}
-		
-	}
+	DrawHangman(guesser->GetMistakes());
+	Console::SetCursorPosition(0, 5);
+//	if (guesser->GetMistakes()==1)
+//	{
+//		int x = 10;
+//		int y = 0;
+//		for (auto line : Constants::HangmanHead)
+//		{
+//			Console::SetCursorPosition(x, y);
+//			std::cout << line;
+//			y++;
+//		}
+//		
+//	}
 		std::cout << std::endl;
 	
 }
+
+
 
 std::string PlayerGame::ChooseWord()
 {

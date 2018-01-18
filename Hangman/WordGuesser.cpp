@@ -91,9 +91,11 @@ void WordGuesser::DisplayHiddenWord()
 void WordGuesser::DisplayUsedLetters()
 {
 	std::cout << "Used letters: ";
-	for (char letter : this->used_letters)
+	for (int i=0; i<used_letters.size();i++)
+		
 	{
-		std::cout << letter << ", ";
+		std::cout << used_letters[i] << ", ";
+		
 	}
 	std::cout << std::endl;
 }
