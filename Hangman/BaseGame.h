@@ -22,7 +22,8 @@ protected:
 	clock_t end;
 
 	virtual void Draw() = 0;
-	virtual void EndGame();
+	virtual void DrawHangman(int mistakes);
+		virtual void EndGame();
 
 private:
 	virtual GameLevel PickLevel();
