@@ -30,10 +30,16 @@ void WordsManager::FilterByMissingChar(std::set<std::string>& words, char a)
 				break;
 			}
 		}
+		//erase
+		if (foundChar == false)
+		{
+			result.insert(word);
+		}
 	}
+	words = result;
 }
 
-char WordsManager::Get50percentUsedLetter(const std::set<std::string>& words)
+std::vector<int> WordsManager::GetOrderedLettersCloseTo50Percent(const std::set<std::string>& words)
 {
 	const int lowercase_offset = 97;
 	const int english_alphabet_size = 26;
@@ -54,14 +60,14 @@ char WordsManager::Get50percentUsedLetter(const std::set<std::string>& words)
 	}
 	double percentOfSum = 100.0 / sum;
 	int smallestDiffIndex = 0;
-	for (int i = 1; i < english_alphabet_size; ++i)
+
+	for (int i = 0; i < english_alphabet_size; ++i)
 	{
-		if (50 - (characterOccurances[smallestDiffIndex] * percentOfSum) > 50 - (characterOccurances[i] * percentOfSum))
-		{
-			smallestDiffIndex = i;
-		}
+		characterOccurances[i] *= percentOfSum;
 	}
-	return smallestDiffIndex + lowercase_offset;
+	std::vector<int> res(characterOccurances,
+	                     characterOccurances + sizeof characterOccurances / sizeof characterOccurances[0]);
+	return res;
 }
 
 char WordsManager::GetMostCommonLetter(const std::set<std::string>& words)
@@ -96,6 +102,25 @@ char WordsManager::GetMostCommonLetter(const std::set<std::string>& words)
 
 void WordsManager::Filter(std::set<std::string>& words, char a, std::vector<int> charPositions)
 {
+	std::set<std::string> result;
+
+	for (auto word : words)
+	{
+		bool allMatch = true;
+		for (int i = 0; i < charPositions.size(); ++i)
+		{
+			if (word[charPositions[i]] != a)
+			{
+				allMatch = false;
+				break;
+			}
+		}
+		if (allMatch)
+		{
+			result.insert(word);
+		}
+	}
+	words = result;
 }
 
 /**

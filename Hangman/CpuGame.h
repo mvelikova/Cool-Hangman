@@ -18,8 +18,9 @@ private:
 	CpuGame();
 
 	std::string hidden_word;
-	std::set<std::string> used_letters;
-
+	std::set<char> used_letters;
+	int mistakes;
+	
 	void RunLevelLogic();
 	void GiveStartingLetters();
 	void SetCommonLetterInHiddenWord(char letter);

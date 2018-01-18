@@ -2,6 +2,7 @@
 d:\github\cool-hangman\hangman\cpugame.h(6): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
   d:\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
   d:\github\cool-hangman\hangman\basegame.h(7): note: see declaration of 'BaseGame'
-d:\github\cool-hangman\hangman\cpugame.cpp(78): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\github\cool-hangman\hangman\cpugame.cpp(141): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\github\cool-hangman\hangman\cpugame.cpp(77): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+d:\github\cool-hangman\hangman\cpugame.cpp(219): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\github\cool-hangman\hangman\cpugame.cpp(289): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe
