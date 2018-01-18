@@ -1,7 +1,7 @@
 #include "WordGuesser.h"
 #include "Constants.h"
 #include <iostream>
-
+#include <algorithm>
 
 WordGuesser::WordGuesser(std::string word, GameLevel game_level)
 {
@@ -17,8 +17,9 @@ WordGuesser::~WordGuesser()
 {
 }
 
-void WordGuesser::Initialize()
+void WordGuesser::Initialize(GameLevel level)
 {
+	this->game_level = level;
 	char firstLetter = this->word[0];
 	char lastLetter = this->word[this->word.size() - 1];
 
@@ -40,9 +41,13 @@ void WordGuesser::Initialize()
 
 void WordGuesser::Guess(char c)
 {
+	if (std::find(this->used_letters.begin(), this->used_letters.end(), c) != this->used_letters.end())
+	{
+		return;
+	}
+    this->used_letters.push_back(c); 
 	if (this->hidden_word.find(c) != std::string::npos)
 	{
-		mistakes++;
 		return;
 	}
 	bool isFound = false;
@@ -73,6 +78,26 @@ std::string WordGuesser::GetHiddenWord()
 	return this->hidden_word;
 }
 
+void WordGuesser::DisplayHiddenWord()
+{
+	std::cout << hidden_word[0];
+	for (int i = 1; i < hidden_word.size(); i++)
+	{
+		std::cout << " " << hidden_word[i];
+	}
+	std::cout << std::endl;
+}
+
+void WordGuesser::DisplayUsedLetters()
+{
+	std::cout << "Used letters: ";
+	for (char letter : this->used_letters)
+	{
+		std::cout << letter << ", ";
+	}
+	std::cout << std::endl;
+}
+
 bool WordGuesser::WordIsGuessed()
 {
 	if (this->hidden_word.find('_') == std::string::npos)
@@ -80,6 +105,15 @@ bool WordGuesser::WordIsGuessed()
 		return true;
 	}
 	return false;
+}
+
+bool WordGuesser::AllMistakesAreMade()
+{
+	if (mistakes <= ACCEPTABLE_ERRORS)
+	{
+		return false;
+	}
+	return true;
 }
 
 /**

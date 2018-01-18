@@ -13,11 +13,10 @@ public:
 	virtual void Run() override;
 
 protected:
-	BaseGame(std::string word = "", GameLevel game_level = GameLevel::Easy);
+	BaseGame( GameLevel game_level = GameLevel::Easy);
 
 	int points;
 	GameLevel game_level;
-	WordGuesser* guesser;
 	double secondsElapsed;
 	clock_t begin;
 	clock_t end;

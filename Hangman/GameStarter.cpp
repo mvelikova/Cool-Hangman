@@ -22,14 +22,13 @@ void GameStarter::Start(const GameType gameType)
 
 	switch (gameType)
 	{
-		case ComputerGuessing:
-			game = new CpuGame(GameLevel::Easy);
-			break;
-		case PlayerGuessing:
-		default:
-			std::string word = "pishka";
-			game = new PlayerGame(word, GameLevel::Easy);
-			break;
+	case ComputerGuessing:
+		game = new CpuGame(GameLevel::Easy);
+		break;
+	case PlayerGuessing:
+	default:
+		game = new PlayerGame(GameLevel::Easy);
+		break;
 	}
 	game->Run();
 

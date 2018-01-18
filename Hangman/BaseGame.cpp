@@ -5,18 +5,17 @@
 #include <conio.h>
 #include "Constants.h"
 
-BaseGame::BaseGame(std::string word, GameLevel game_level)
+BaseGame::BaseGame( GameLevel game_level)
 {
 	//Initialization
 	this->points = 0;
 	this->secondsElapsed = 0;
-	this->guesser = new WordGuesser(word, game_level);
 	this->game_level = game_level;
 }
 
 BaseGame::~BaseGame()
 {
-	delete this->guesser;
+	
 }
 
 inline void BaseGame::Run()
@@ -31,7 +30,7 @@ void BaseGame::EndGame()
 	this->secondsElapsed = double(end - begin) / CLOCKS_PER_SEC;
 
 	std::cout << "Points: " << this->points << std::endl;
-	std::cout << "Mistakes: " << this->guesser->GetMistakes() << std::endl;
+
 }
 
 double BaseGame::get_current_seconds_elapsed()

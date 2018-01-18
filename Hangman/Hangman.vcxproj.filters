@@ -81,6 +81,9 @@
     <ClCompile Include="WordsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Guesser.cpp">
+      <Filter>Source Files\Infrastructure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="WordsManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Guesser.h">
+      <Filter>Header Files\Infrastructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
