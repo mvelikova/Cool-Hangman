@@ -3,6 +3,7 @@
 #include <cstring>
 #include <windows.h>
 #include <iostream>
+#include "Constants.h"
 
 void Console::Clear()
 {
@@ -45,7 +46,7 @@ void Console::SetSize(int width, int height)
 		std::cout << "SetConsoleWindowInfo failed with error " << GetLastError() << std::endl;
 	}
 
-	if (!SetConsoleTitle("TEST"))
+	if (!SetConsoleTitle(GAME_TITLE))
 	{
 		std::cout << "SetConsoleTitle failed with error " << GetLastError() << std::endl;
 	}

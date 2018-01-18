@@ -14,6 +14,8 @@
 #define CONSOLE_WIDTH 100
 #define CONSOLE_HEIGHT 60
 
+#define GAME_TITLE "Cool hangman"
+
 class Constants
 {
 public:

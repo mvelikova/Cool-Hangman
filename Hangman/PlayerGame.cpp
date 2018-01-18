@@ -34,6 +34,12 @@ void PlayerGame::Run()
 	{
 		Draw();
 	}
+	else
+	{
+		Console::Clear();
+		std::cout << "You WON!"<<std::endl;
+	}
+
 	//game logic
 	
 
@@ -43,6 +49,7 @@ void PlayerGame::Draw()
 	Console::Clear();
 	guesser->DisplayHiddenWord();
 	guesser->DisplayUsedLetters();
+
 		std::cout << guesser->word << std::endl; //TODO: make word private again
 	std::cout << guesser->GetMistakes() << std::endl;
 	DrawHangman(guesser->GetMistakes());

@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseGame.h"
+#include "LetterGuesser.h"
 
 class CpuGame : public BaseGame, public IDrawable
 {
@@ -14,6 +15,7 @@ protected:
 	void EndGame() override;
 
 private:
+	LetterGuesser* guesser;
 	CpuGame();
 };
 
