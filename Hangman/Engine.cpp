@@ -8,6 +8,7 @@
 #include "GameMenu.h"
 #include "WordsManager.h"
 #include "Helpers.h"
+#include "Console.h"
 
 
 Engine::Engine()
@@ -21,6 +22,8 @@ Engine::~Engine()
 
 void Engine::Run()
 {
+	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
+
 	std::string path = "..\\" + Constants::DictionaryFilePath;
 	std::ifstream ifs(path);
 	InputReader* reader = new InputReader(ifs);

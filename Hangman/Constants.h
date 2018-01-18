@@ -11,6 +11,9 @@
 #define WORD_GUESSER_HIDDEN_CHAR '_'
 #define ACCEPTABLE_ERRORS 7
 
+#define CONSOLE_WIDTH 100
+#define CONSOLE_HEIGHT 60
+
 class Constants
 {
 public:

@@ -1,4 +1,11 @@
-﻿  PlayerGame.cpp
-c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(64): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe
+﻿  Engine.cpp
+  Generating Code...
+  Compiling...
+  WordGuesser.cpp
+  GameMenu.cpp
+d:\github\cool-hangman\hangman\gamemenu.cpp(31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Constants.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  GameLevel.h
+  Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe
