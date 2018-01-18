@@ -84,9 +84,6 @@
     <ClCompile Include="Guesser.cpp">
       <Filter>Source Files\Infrastructure</Filter>
     </ClCompile>
-    <ClCompile Include="LetterGuesser.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -135,9 +132,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Guesser.h">
-      <Filter>Header Files\Infrastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="LetterGuesser.h">
       <Filter>Header Files\Infrastructure</Filter>
     </ClInclude>
   </ItemGroup>

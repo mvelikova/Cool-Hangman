@@ -43,24 +43,22 @@ void WordGuesser::Guess(char c)
 {
 	if (std::find(this->used_letters.begin(), this->used_letters.end(), c) != this->used_letters.end())
 	{
+		//if found
 		return;
 	}
-    this->used_letters.push_back(c); 
-	if (this->hidden_word.find(c) != std::string::npos)
-	{
-		return;
-	}
+
+	this->used_letters.insert(c);
+	
 	bool isFound = false;
-	std::vector<int> charLocation = IndexesOf(this->word, c);
+	std::vector<int> charLocations = IndexesOf(this->word, c);
 
 	//find all occurances of this char and update hidden word
-	for (int i = 0; i < charLocation.size(); i++)
+	for (int i = 0; i < charLocations.size(); i++)
 	{
 		isFound = true;
-		this->hidden_word[charLocation[i]] = c;
+		this->hidden_word[charLocations[i]] = c;
 	}
-
-
+	
 	if (!isFound)
 	{
 		mistakes++;
@@ -91,12 +89,12 @@ void WordGuesser::DisplayHiddenWord()
 void WordGuesser::DisplayUsedLetters()
 {
 	std::cout << "Used letters: ";
-	for (int i=0; i<used_letters.size();i++)
-		
+
+	for (auto used_letter : this->used_letters)
 	{
-		std::cout << used_letters[i] << ", ";
-		
+		std::cout << used_letter << ", ";
 	}
+
 	std::cout << std::endl;
 }
 

@@ -5,17 +5,18 @@
 #include <conio.h>
 #include "Constants.h"
 
-BaseGame::BaseGame( GameLevel game_level)
+BaseGame::BaseGame(GameLevel game_level)
 {
 	//Initialization
 	this->points = 0;
 	this->secondsElapsed = 0;
 	this->game_level = game_level;
+
+	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
 }
 
 BaseGame::~BaseGame()
 {
-	
 }
 
 inline void BaseGame::Run()
@@ -26,7 +27,7 @@ inline void BaseGame::Run()
 
 void BaseGame::DrawHangman(int mistakes)
 {
-	if (mistakes==1)
+	if (mistakes == 1)
 	{
 		Console::SetCursorPosition(30, 38);
 		std::cout << Constants::Gibbet1[0];
@@ -42,79 +43,73 @@ void BaseGame::DrawHangman(int mistakes)
 			std::cout << element;
 			y--;
 		}
-
 	}
-		if (mistakes == 3)
+	if (mistakes == 3)
+	{
+		DrawHangman(mistakes - 1);
+
+		int y = 2;
+		for (auto element : Constants::Gibbet3)
 		{
-			DrawHangman(mistakes - 1);
-
-			int y = 2;
-			for (auto element : Constants::Gibbet3)
-			{
-				Console::SetCursorPosition(38, y);
-				std::cout << element;
-				y--;
-			}
-
+			Console::SetCursorPosition(38, y);
+			std::cout << element;
+			y--;
 		}
-		if (mistakes == 4)
+	}
+	if (mistakes == 4)
+	{
+		DrawHangman(mistakes - 1);
+
+		int y = 3;
+		for (auto element : Constants::Gibbet4)
 		{
-			DrawHangman(mistakes - 1);
-
-			int y = 3;
-			for (auto element : Constants::Gibbet4)
-			{
-				Console::SetCursorPosition(39, y);
-				std::cout << element;
-				y++;
-			}
-
+			Console::SetCursorPosition(39, y);
+			std::cout << element;
+			y++;
 		}
-		if (mistakes == 5)
+	}
+	if (mistakes == 5)
+	{
+		DrawHangman(mistakes - 1);
+
+		int y = 5;
+		for (auto element : Constants::HangmanHead)
 		{
-			DrawHangman(mistakes - 1);
-
-			int y = 5;
-			for (auto element : Constants::HangmanHead)
-			{
-				Console::SetCursorPosition(41, y);
-				std::cout << element;
-				y++;
-			}
-
+			Console::SetCursorPosition(41, y);
+			std::cout << element;
+			y++;
 		}
-		if (mistakes == 6)
+	}
+	if (mistakes == 6)
+	{
+		DrawHangman(mistakes - 1);
+
+		int y = 12;
+		for (auto element : Constants::HangmanHands)
 		{
-			DrawHangman(mistakes - 1);
-
-			int y = 12;
-			for (auto element : Constants::HangmanHands)
-			{
-				Console::SetCursorPosition(40, y);
-				std::cout << element;
-				y++;
-			}
-
+			Console::SetCursorPosition(40, y);
+			std::cout << element;
+			y++;
 		}
-		if (mistakes == 7)
+	}
+	if (mistakes == 7)
+	{
+		DrawHangman(mistakes - 1);
+
+		int y = 25;
+		for (auto element : Constants::HangmanLegs)
 		{
-			DrawHangman(mistakes - 1);
-
-			int y = 25;
-			for (auto element : Constants::HangmanLegs)
-			{
-				Console::SetCursorPosition(40, y);
-				std::cout << element;
-				y++;
-			}
-			Console::SetCursorPosition(56, 8);
-			std::cout << "X";
-			Console::SetCursorPosition(59, 8);
-			std::cout << "X";
-			Console::SetCursorPosition(70, 8);
-			std::cout << "DEAD!";
+			Console::SetCursorPosition(40, y);
+			std::cout << element;
+			y++;
 		}
-		
+		Console::SetCursorPosition(56, 8);
+		std::cout << "X";
+		Console::SetCursorPosition(59, 8);
+		std::cout << "X";
+		Console::SetCursorPosition(70, 8);
+		std::cout << "DEAD!";
+	}
 }
 
 void BaseGame::EndGame()
@@ -123,7 +118,6 @@ void BaseGame::EndGame()
 	this->secondsElapsed = double(end - begin) / CLOCKS_PER_SEC;
 
 	std::cout << "Points: " << this->points << std::endl;
-
 }
 
 double BaseGame::get_current_seconds_elapsed()
@@ -143,13 +137,13 @@ GameLevel BaseGame::PickLevel()
 
 	while (true)
 	{
-		c = _getch();
+		c = Console::ReadKey();
 
 		//catch if an arrow is passed
 		if (c == -32)
 		{
 			//determine which arrow
-			c = _getch();
+			c = Console::ReadKey();
 		}
 
 		switch (c)

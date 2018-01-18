@@ -6,11 +6,10 @@
 #include "Constants.h"
 
 
-PlayerGame::PlayerGame(GameLevel game_level) : BaseGame( game_level)
+PlayerGame::PlayerGame(GameLevel game_level) : BaseGame(game_level)
 {
 	std::string word = ChooseWord();
 	guesser = new WordGuesser(word, this->game_level);
-
 }
 
 
@@ -21,13 +20,12 @@ PlayerGame::~PlayerGame()
 void PlayerGame::Run()
 {
 	BaseGame::Run();
-	
+
 
 	guesser->Initialize(this->game_level);
 
 	while (!guesser->WordIsGuessed() && !guesser->AllMistakesAreMade())
 	{
-
 		Turn();
 	}
 	if (guesser->AllMistakesAreMade())
@@ -37,47 +35,34 @@ void PlayerGame::Run()
 	else
 	{
 		Console::Clear();
-		std::cout << "You WON!"<<std::endl;
+		std::cout << "You WON!" << std::endl;
 	}
 
 	//game logic
-	
-
 }
+
 void PlayerGame::Draw()
 {
 	Console::Clear();
+
 	guesser->DisplayHiddenWord();
 	guesser->DisplayUsedLetters();
 
-		std::cout << guesser->word << std::endl; //TODO: make word private again
+	std::cout << guesser->word << std::endl; //TODO: make word private again
 	std::cout << guesser->GetMistakes() << std::endl;
+
 	DrawHangman(guesser->GetMistakes());
 	Console::SetCursorPosition(0, 5);
-//	if (guesser->GetMistakes()==1)
-//	{
-//		int x = 10;
-//		int y = 0;
-//		for (auto line : Constants::HangmanHead)
-//		{
-//			Console::SetCursorPosition(x, y);
-//			std::cout << line;
-//			y++;
-//		}
-//		
-//	}
-		std::cout << std::endl;
-	
+
+	std::cout << std::endl;
 }
-
-
 
 std::string PlayerGame::ChooseWord()
 {
 	std::set<std::string> words = Helpers::all_words;
 	int wordsCount = words.size();
 	srand(time(NULL));
-	int randomIndex= rand() % wordsCount;
+	int randomIndex = rand() % wordsCount;
 	std::set<std::string>::const_iterator it(words.begin());
 
 	advance(it, randomIndex);
@@ -87,23 +72,29 @@ std::string PlayerGame::ChooseWord()
 void PlayerGame::Turn()
 {
 	this->Draw();
-	std::cout << "Please enter a signle letter: ";
-	char c;
-	std::cin >> c;
-	if (c>=65 && c<=90)
-	{
-		c += 32;
-		guesser->Guess(c);
+	std::cout << "Please enter a single letter: ";
 
-	}
-	else if(c >= 97 && c <= 122)
+	char c;
+	c = Console::ReadKey();
+
+	bool isUpper = c >= 65 && c <= 90;
+	bool isLower = c >= 97 && c <= 122;
+
+	while (!(isUpper || isLower)) // not a letter
 	{
-		guesser->Guess(c);
+		std::cin >> c;
+
+		this->Draw();
+		std::cout << "Please enter a single letter: ";
 	}
-	else
+
+	if (isUpper)
 	{
-		Turn();
+		//if upper
+		c += 32;
 	}
+
+	guesser->Guess(c);
 }
 
 void PlayerGame::EndGame()

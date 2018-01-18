@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <iostream>
 #include "Constants.h"
+#include <conio.h>
 
 void Console::Clear()
 {
@@ -50,6 +51,14 @@ void Console::SetSize(int width, int height)
 	{
 		std::cout << "SetConsoleTitle failed with error " << GetLastError() << std::endl;
 	}
+}
+
+char Console::ReadKey()
+{
+	char c;
+	c = _getch();
+
+	return c;
 }
 
 Console::Console()

@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseGame.h"
-#include "LetterGuesser.h"
+#include <set>
 
 class CpuGame : public BaseGame, public IDrawable
 {
@@ -15,7 +15,14 @@ protected:
 	void EndGame() override;
 
 private:
-	LetterGuesser* guesser;
 	CpuGame();
+
+	std::string hidden_word;
+	std::set<std::string> used_letters;
+
+	void RunLevelLogic();
+	void GiveStartingLetters();
+	void SetCommonLetterInHiddenWord(char letter);
+	void DrawWordGuesser(int index) const;
 };
 

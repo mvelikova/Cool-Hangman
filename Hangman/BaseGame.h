@@ -3,7 +3,6 @@
 #include <ctime>
 #include "IDrawable.h"
 #include "GameLevel.h"
-#include "WordGuesser.h"
 
 class BaseGame : public IRunnable, public IDrawable
 {
