@@ -21,6 +21,7 @@ protected:
 	clock_t end;
 
 	virtual void Draw() = 0;
+	virtual void Turn() = 0;
 	virtual void DrawHangman(int mistakes);
 		virtual void EndGame();
 

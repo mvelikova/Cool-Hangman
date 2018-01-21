@@ -29,3 +29,5 @@ void Helpers::DrawCursor(int index, int indexes, int delimiters)
 }
 
 std::set<std::string> Helpers::all_words;
+
+std::set<std::string> Helpers::current_game_words;

@@ -1,4 +1,5 @@
 #include "WordsManager.h"
+#include "Helpers.h"
 
 WordsManager::WordsManager()
 {
@@ -39,38 +40,52 @@ void WordsManager::FilterByMissingChar(std::set<std::string>& words, char a)
 	words = result;
 }
 
-std::vector<int> WordsManager::GetOrderedLettersCloseTo50Percent(const std::set<std::string>& words)
+std::vector<int> WordsManager::GetLettersOccurancesPercents(const std::set<std::string>& words, std::set<char> used_letters)
 {
 	const int lowercase_offset = 97;
 	const int english_alphabet_size = 26;
-	int characterOccurances[english_alphabet_size] = {0};
+	double characterOccurances[english_alphabet_size] = {0};
 
-	for (auto word : words)
+//	for (auto word : words)
+//	{
+//		for (auto character : word)
+//		{
+//			int idx = character - lowercase_offset;
+//			characterOccurances[idx]++;
+//		}
+//	}
+	for (int j=0;j<26;j++)
 	{
-		for (auto character : word)
+		for (auto word : words)
 		{
-			int idx = character - lowercase_offset;
-			characterOccurances[idx]++;
+			if (word.find(j+lowercase_offset) != std::string::npos)
+			{
+				characterOccurances[j]++;
+			}
 		}
+	}
+	for (auto le : used_letters)
+	{
+		characterOccurances[le - lowercase_offset] = 0;
 	}
 	int sum = 0;
 	for (int i = 0; i < english_alphabet_size; ++i)
 	{
 		sum += characterOccurances[i];
 	}
-	double percentOfSum = 100.0 / sum;
+//	double percentOfSum = 100.0 / sum;
 	int smallestDiffIndex = 0;
 
 	for (int i = 0; i < english_alphabet_size; ++i)
 	{
-		characterOccurances[i] *= percentOfSum;
+		characterOccurances[i] = (characterOccurances[i] * 100) / Helpers::current_game_words.size();
 	}
 	std::vector<int> res(characterOccurances,
 	                     characterOccurances + sizeof characterOccurances / sizeof characterOccurances[0]);
 	return res;
 }
 
-char WordsManager::GetMostCommonLetter(const std::set<std::string>& words)
+char WordsManager::GetMostCommonLetter(const std::set<std::string>& words, std::set<char> used_letters)
 {
 	const int lowercase_offset = 97;
 	const int english_alphabet_size = 26;
@@ -86,18 +101,25 @@ char WordsManager::GetMostCommonLetter(const std::set<std::string>& words)
 		}
 	}
 
-	char maxLetter = 0;
-	int v = characterOccurances[0];
-
-	for (int i = 1; i < english_alphabet_size; ++i)
+	char maxLetterIdx;
+	for (int i = 0; i < english_alphabet_size; ++i)
 	{
-		if (characterOccurances[i] > characterOccurances[maxLetter])
+		if (used_letters.find(i+lowercase_offset)==used_letters.end())
 		{
-			maxLetter = i;
+			maxLetterIdx = i;
+			break;
 		}
 	}
 
-	return maxLetter + lowercase_offset;
+	for (int i = maxLetterIdx+1; i < english_alphabet_size; ++i)
+	{
+		if (characterOccurances[i] > characterOccurances[maxLetterIdx] && used_letters.find(i + lowercase_offset) == used_letters.end())
+		{
+			maxLetterIdx = i;
+		}
+	}
+
+	return maxLetterIdx + lowercase_offset;
 }
 
 void WordsManager::Filter(std::set<std::string>& words, char a, std::vector<int> charPositions)
@@ -114,6 +136,18 @@ void WordsManager::Filter(std::set<std::string>& words, char a, std::vector<int>
 				allMatch = false;
 				break;
 			}
+		}
+		int letterCount = 0;
+		for (int i=0;i<word.size();i++)
+		{
+			if (word[i]==a)
+			{
+				letterCount++;
+			}
+		}
+		if (letterCount!=charPositions.size())
+		{
+			allMatch = false;
 		}
 		if (allMatch)
 		{

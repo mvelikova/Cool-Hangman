@@ -13,7 +13,7 @@ public:
 	std::set<std::string> Filter(const std::set<std::string>& words, unsigned int size);
 	void FilterByMissingChar(std::set<std::string>& words, char a);
 
-	std::vector<int> GetOrderedLettersCloseTo50Percent(const std::set<std::string>& words);
-	char GetMostCommonLetter(const std::set<std::string>& words);
+	std::vector<int> GetLettersOccurancesPercents(const std::set<std::string>& words, std::set<char> used_letters);
+	char GetMostCommonLetter(const std::set<std::string>& words, std::set<char> used_letters);
 };
 

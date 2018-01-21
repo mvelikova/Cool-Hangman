@@ -1,15 +1,17 @@
 #pragma once
 #include "BaseGame.h"
 #include <set>
+#include "CpuWordGuesser.h"
 
 class CpuGame : public BaseGame, public IDrawable
 {
 public:
 	CpuGame(GameLevel game_level);
-	~CpuGame();
+	virtual ~CpuGame();
 
 	virtual void Run() override;
 	virtual void Draw() override;
+	virtual void Turn() override;
 
 protected:
 	void EndGame() override;
@@ -17,13 +19,14 @@ protected:
 private:
 	CpuGame();
 
-	std::string hidden_word;
-	std::set<char> used_letters;
-	int mistakes;
+	CpuWordGuesser* guesser;
+
 	
 	void RunLevelLogic();
 	void GiveStartingLetters();
 	void SetCommonLetterInHiddenWord(char letter);
-	void DrawWordGuesser(int index) const;
+	void DrawPlayerWordGuesser(int index) const;
+
+	bool GameShouldEnd();
 };
 

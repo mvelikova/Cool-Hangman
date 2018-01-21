@@ -75,13 +75,16 @@
     <ClCompile Include="GameLevel.h">
       <Filter>Header Files\Enums</Filter>
     </ClCompile>
-    <ClCompile Include="WordGuesser.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
-    </ClCompile>
     <ClCompile Include="WordsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Guesser.cpp">
+      <Filter>Source Files\Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerWordGuesser.cpp">
+      <Filter>Source Files\Infrastructure</Filter>
+    </ClCompile>
+    <ClCompile Include="CpuWordGuesser.cpp">
       <Filter>Source Files\Infrastructure</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,13 +128,16 @@
     <ClInclude Include="CpuGame.h">
       <Filter>Header Files\Games</Filter>
     </ClInclude>
-    <ClInclude Include="WordGuesser.h">
-      <Filter>Header Files\Infrastructure</Filter>
-    </ClInclude>
     <ClInclude Include="WordsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Guesser.h">
+      <Filter>Header Files\Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerWordGuesser.h">
+      <Filter>Header Files\Infrastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="CpuWordGuesser.h">
       <Filter>Header Files\Infrastructure</Filter>
     </ClInclude>
   </ItemGroup>

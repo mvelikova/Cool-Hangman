@@ -119,6 +119,7 @@
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="CpuGame.cpp" />
+    <ClCompile Include="CpuWordGuesser.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameLevel.h" />
     <ClCompile Include="GameStarter.cpp" />
@@ -128,13 +129,14 @@
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="PlayerGame.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="WordGuesser.cpp" />
+    <ClCompile Include="PlayerWordGuesser.cpp" />
     <ClCompile Include="WordsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="CpuGame.h" />
+    <ClInclude Include="CpuWordGuesser.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="GameStarter.h" />
@@ -146,7 +148,7 @@
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="IRunnable.h" />
     <ClInclude Include="PlayerGame.h" />
-    <ClInclude Include="WordGuesser.h" />
+    <ClInclude Include="PlayerWordGuesser.h" />
     <ClInclude Include="WordsManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,17 +4,19 @@
 #include "Console.h"
 #include <windows.h>
 #include "Constants.h"
+#include "PlayerWordGuesser.h"
 
 
 PlayerGame::PlayerGame(GameLevel game_level) : BaseGame(game_level)
 {
 	std::string word = ChooseWord();
-	guesser = new WordGuesser(word, this->game_level);
+	guesser = new PlayerWordGuesser(word, this->game_level);
 }
 
 
 PlayerGame::~PlayerGame()
 {
+	delete guesser;
 }
 
 void PlayerGame::Run()

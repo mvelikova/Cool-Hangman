@@ -1,8 +1,92 @@
 ﻿  CpuGame.cpp
-d:\github\cool-hangman\hangman\cpugame.h(6): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
-  d:\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
-  d:\github\cool-hangman\hangman\basegame.h(7): note: see declaration of 'BaseGame'
-d:\github\cool-hangman\hangman\cpugame.cpp(77): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-d:\github\cool-hangman\hangman\cpugame.cpp(219): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-d:\github\cool-hangman\hangman\cpugame.cpp(289): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe
+c:\users\maria\documents\github\cool-hangman\hangman\cpugame.h(7): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
+  c:\users\maria\documents\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
+  c:\users\maria\documents\github\cool-hangman\hangman\basegame.h(7): note: see declaration of 'BaseGame'
+c:\users\maria\documents\github\cool-hangman\hangman\cpugame.cpp(142): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\maria\documents\github\cool-hangman\hangman\cpugame.cpp(152): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\maria\documents\github\cool-hangman\hangman\cpugame.cpp(222): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  WordsManager.cpp
+c:\users\maria\documents\github\cool-hangman\hangman\wordsmanager.cpp(74): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xmemory0(856): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xmemory(92): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,double&>(_Alloc &,_Objty *const ,double &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<int>,
+              _Ty=int,
+              _Objty=int
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xmemory(92): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,double&>(_Alloc &,_Objty *const ,double &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<int>,
+              _Ty=int,
+              _Objty=int
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xmemory(125): note: see reference to function template instantiation '_FwdIt std::_Uninitialized_copy_al_unchecked<_Iter,int*,_Alloc>(_InIt,_InIt,_FwdIt,_Alloc &,std::_General_ptr_iterator_tag,std::_Any_tag)' being compiled
+          with
+          [
+              _FwdIt=int *,
+              _Iter=double *,
+              _Alloc=std::allocator<int>,
+              _InIt=double *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\vector(1914): note: see reference to function template instantiation '_FwdIt *std::_Uninitialized_copy<_Iter,int*,std::allocator<_Ty>>(_InIt,_InIt,_FwdIt,_Alloc &)' being compiled
+          with
+          [
+              _FwdIt=int *,
+              _Iter=double *,
+              _Ty=int,
+              _InIt=double *,
+              _Alloc=std::allocator<int>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\vector(742): note: see reference to function template instantiation 'int *std::vector<int,std::allocator<_Ty>>::_Ucopy<_Iter>(_Iter,_Iter,int *)' being compiled
+          with
+          [
+              _Ty=int,
+              _Iter=double *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\vector(742): note: see reference to function template instantiation 'int *std::vector<int,std::allocator<_Ty>>::_Ucopy<_Iter>(_Iter,_Iter,int *)' being compiled
+          with
+          [
+              _Ty=int,
+              _Iter=double *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\vector(757): note: see reference to function template instantiation 'void std::vector<int,std::allocator<_Ty>>::_Range_construct_or_tidy<_Iter>(_Iter,_Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Ty=int,
+              _Iter=double *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\vector(757): note: see reference to function template instantiation 'void std::vector<int,std::allocator<_Ty>>::_Range_construct_or_tidy<_Iter>(_Iter,_Iter,std::forward_iterator_tag)' being compiled
+          with
+          [
+              _Ty=int,
+              _Iter=double *
+          ]
+  c:\users\maria\documents\github\cool-hangman\hangman\wordsmanager.cpp(84): note: see reference to function template instantiation 'std::vector<int,std::allocator<_Ty>>::vector<double*,void>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Ty=int,
+              _Iter=double *,
+              _Alloc=std::allocator<int>
+          ]
+  c:\users\maria\documents\github\cool-hangman\hangman\wordsmanager.cpp(83): note: see reference to function template instantiation 'std::vector<int,std::allocator<_Ty>>::vector<double*,void>(_Iter,_Iter,const _Alloc &)' being compiled
+          with
+          [
+              _Ty=int,
+              _Iter=double *,
+              _Alloc=std::allocator<int>
+          ]
+  PlayerGame.cpp
+c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(66): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Helpers.cpp
+  Engine.cpp
+  CpuWordGuesser.cpp
+c:\users\maria\documents\github\cool-hangman\hangman\cpuwordguesser.cpp(38): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  GameLevel.h
+  Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe

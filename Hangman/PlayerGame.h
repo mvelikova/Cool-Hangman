@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseGame.h"
-#include "WordGuesser.h"
+#include "PlayerWordGuesser.h"
 
 class PlayerGame : public BaseGame
 {
@@ -11,11 +11,11 @@ public:
 	virtual void Run() override;
 	virtual void Draw() override;
 	std::string ChooseWord();
-	void Turn();
+	virtual void Turn() override;
 protected:
 	void EndGame() override;
 
 private:
-	WordGuesser* guesser;
+	PlayerWordGuesser* guesser;
 	PlayerGame();
 };

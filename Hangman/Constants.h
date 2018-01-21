@@ -8,6 +8,7 @@
 #define KEY_RIGHT 77
 #define ENTER 13
 #define ESCAPE 27
+#define SPACE 32
 
 #define WORD_GUESSER_HIDDEN_CHAR '_'
 #define ACCEPTABLE_ERRORS 6
