@@ -20,7 +20,7 @@ CpuGame::~CpuGame()
 void CpuGame::Run()
 {
 	BaseGame::Run();
-
+	Console::Clear();
 	int n;
 	std::cout << "Give the size of the word you're thinking of" << std::endl;
 	std::cin >> n;

@@ -34,22 +34,22 @@ void Engine::Run()
 	{
 		GameMenu* menu = new GameMenu(new GameStarter());
 		menu->Run();
+		Console::SetCursorPosition(70,9);
 		std::cout << "Press ENTER to play again and ESC to end the game" << std::endl;
 		char ans;
 		ans = Console::ReadKey();
 
-		while (ans != ENTER && ans!=ESCAPE )
+		while (ans != ENTER && ans != ESCAPE)
 		{
 			ans = Console::ReadKey();
 		}
-		if (ans==ESCAPE)
+		if (ans == ESCAPE)
 		{
 			Console::Clear();
 			break;
 		}
-
 	}
-	
+
 
 	delete reader;
 }

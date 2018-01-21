@@ -13,7 +13,7 @@
 #define WORD_GUESSER_HIDDEN_CHAR '_'
 #define ACCEPTABLE_ERRORS 6
 
-#define CONSOLE_WIDTH 100
+#define CONSOLE_WIDTH 200
 #define CONSOLE_HEIGHT 60
 
 #define GAME_TITLE "Cool hangman"
@@ -29,6 +29,7 @@ public:
 	static const std::vector<std::string> Gibbet2;
 	static const std::vector<std::string> Gibbet3;
 	static const std::vector<std::string> Gibbet4;
+	static const std::vector<std::string> HangmanTitle;
 
 
 private:

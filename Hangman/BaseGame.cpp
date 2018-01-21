@@ -129,6 +129,8 @@ double BaseGame::get_current_seconds_elapsed()
 GameLevel BaseGame::PickLevel()
 {
 	Console::Clear();
+
+	
 	PrintLevels(GameLevel::Easy);
 
 	int menuOption = 0;
@@ -169,9 +171,14 @@ GameLevel BaseGame::PickLevel()
 void BaseGame::PrintLevels(const int current_selection = 0)
 {
 	Console::Clear();
-
+	for (int i = 0; i < Constants::HangmanTitle.size(); i++)
+	{
+		std::cout << Constants::HangmanTitle[i] << std::endl;
+	}
 	for (int i = GameLevel::Easy; i != GameLevel::Pro + 1; i++)
 	{
+		Console::SetCursorPosition(45, 20+i);
+
 		GameLevel foo = static_cast<GameLevel>(i);
 
 		if (i == current_selection)

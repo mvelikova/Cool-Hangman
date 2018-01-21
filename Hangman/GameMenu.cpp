@@ -47,21 +47,21 @@ void GameMenu::Draw()
 
 		switch (c)
 		{
-			case KEY_LEFT:
-			case KEY_UP:
-				(menuOption == 0) ? (menuOption = options_size - 1) : menuOption--;
-				this->DrawMenuOptions(menuOption);
-				break;
-			case KEY_RIGHT:
-			case KEY_DOWN:
-				menuOption = ++menuOption % options_size;
-				this->DrawMenuOptions(menuOption);
-				break;
-			case ENTER:
-				hasSelectedOption = true;
-				break;
-			default:
-				break;
+		case KEY_LEFT:
+		case KEY_UP:
+			(menuOption == 0) ? (menuOption = options_size - 1) : menuOption--;
+			this->DrawMenuOptions(menuOption);
+			break;
+		case KEY_RIGHT:
+		case KEY_DOWN:
+			menuOption = ++menuOption % options_size;
+			this->DrawMenuOptions(menuOption);
+			break;
+		case ENTER:
+			hasSelectedOption = true;
+			break;
+		default:
+			break;
 		}
 	}
 	while (!hasSelectedOption);
@@ -76,12 +76,16 @@ GameMenu::GameMenu()
 void GameMenu::DrawMenuOptions(int selectedOption)
 {
 	Console::Clear();
-
+	for (int i = 0; i < Constants::HangmanTitle.size(); i++)
+	{
+		std::cout << Constants::HangmanTitle[i] << std::endl;
+	}
 	int num = 0;
 
 	for (int i = 0; i < this->menu_options.size(); ++i)
 	{
+		Console::SetCursorPosition(45, 17+i);
 		(i == selectedOption) ? std::cout << "-->" : std::cout << "   ";
 		std::cout << ++num << ". " << this->menu_options[i] << std::endl;
-	}
+			}
 }
