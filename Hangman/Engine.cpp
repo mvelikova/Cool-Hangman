@@ -29,7 +29,7 @@ void Engine::Run()
 	auto f = std::async(std::launch::async, &InputReader::WriteAll, reader);
 	Helpers::all_words = f.get();
 
-	std::cout << "Starting..." << std::endl;
+	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
 	while (true)
 	{
 		GameMenu* menu = new GameMenu(new GameStarter());

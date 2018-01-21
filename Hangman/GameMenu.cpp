@@ -84,7 +84,7 @@ void GameMenu::DrawMenuOptions(int selectedOption)
 
 	for (int i = 0; i < this->menu_options.size(); ++i)
 	{
-		Console::SetCursorPosition(45, 17+i);
+		Console::SetCursorPosition(40, 15+i);
 		(i == selectedOption) ? std::cout << "-->" : std::cout << "   ";
 		std::cout << ++num << ". " << this->menu_options[i] << std::endl;
 			}

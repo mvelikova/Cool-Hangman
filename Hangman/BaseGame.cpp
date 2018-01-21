@@ -12,7 +12,7 @@ BaseGame::BaseGame(GameLevel game_level)
 	this->secondsElapsed = 0;
 	this->game_level = game_level;
 
-	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
+	
 }
 
 BaseGame::~BaseGame()
@@ -177,7 +177,7 @@ void BaseGame::PrintLevels(const int current_selection = 0)
 	}
 	for (int i = GameLevel::Easy; i != GameLevel::Pro + 1; i++)
 	{
-		Console::SetCursorPosition(45, 20+i);
+		Console::SetCursorPosition(45, 16+i);
 
 		GameLevel foo = static_cast<GameLevel>(i);
 
