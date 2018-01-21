@@ -15,8 +15,9 @@ public:
 	void DisplayHiddenWord();
 	void DisplayUsedLetters();
 	
-	std::string word;
 
 private:
 	GameLevel game_level;
+	std::string word;
+
 };

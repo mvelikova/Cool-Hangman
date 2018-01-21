@@ -30,9 +30,26 @@ void Engine::Run()
 	Helpers::all_words = f.get();
 
 	std::cout << "Starting..." << std::endl;
+	while (true)
+	{
+		GameMenu* menu = new GameMenu(new GameStarter());
+		menu->Run();
+		std::cout << "Press ENTER to play again and ESC to end the game" << std::endl;
+		char ans;
+		ans = Console::ReadKey();
 
-	GameMenu* menu = new GameMenu(new GameStarter());
-	menu->Run();
+		while (ans != ENTER && ans!=ESCAPE )
+		{
+			ans = Console::ReadKey();
+		}
+		if (ans==ESCAPE)
+		{
+			Console::Clear();
+			break;
+		}
+
+	}
+	
 
 	delete reader;
 }

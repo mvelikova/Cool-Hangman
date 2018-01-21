@@ -50,7 +50,6 @@ void PlayerGame::Draw()
 	guesser->DisplayHiddenWord();
 	guesser->DisplayUsedLetters();
 
-	std::cout << guesser->word << std::endl; //TODO: make word private again
 	std::cout << guesser->GetMistakes() << std::endl;
 
 	DrawHangman(guesser->GetMistakes());

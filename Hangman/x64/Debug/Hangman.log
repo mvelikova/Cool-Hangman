@@ -1,12 +1,2 @@
-﻿  Helpers.cpp
-  CpuWordGuesser.cpp
-c:\users\maria\documents\github\cool-hangman\hangman\cpuwordguesser.cpp(37): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Generating Code...
-c:\users\maria\documents\github\cool-hangman\hangman\cpuwordguesser.cpp(110): warning C4715: 'CpuWordGuesser::SuggestLetter1': not all control paths return a value
-  Skipping... (no relevant changes detected)
-  GameLevel.h
-  WordsManager.cpp
-  PlayerGame.cpp
-  Engine.cpp
-  CpuGame.cpp
+﻿  Engine.cpp
   Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe
