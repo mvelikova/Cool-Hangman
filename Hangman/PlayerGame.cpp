@@ -73,7 +73,7 @@ std::string PlayerGame::ChooseWord()
 void PlayerGame::Turn()
 {
 	this->Draw();
-	std::cout << "Please enter a single letter: ";
+	std::cout << "Please enter a letter: ";
 
 	char c;
 	c = Console::ReadKey();

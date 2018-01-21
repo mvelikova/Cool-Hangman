@@ -30,6 +30,7 @@ public:
 	static const std::vector<std::string> Gibbet3;
 	static const std::vector<std::string> Gibbet4;
 	static const std::vector<std::string> HangmanTitle;
+	static const std::vector<std::string> Logan;
 
 
 private:

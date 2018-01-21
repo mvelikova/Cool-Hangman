@@ -1,2 +1,4 @@
-﻿  BaseGame.cpp
+﻿  PlayerGame.cpp
+c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(64): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(65): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe

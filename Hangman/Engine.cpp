@@ -34,7 +34,7 @@ void Engine::Run()
 	{
 		GameMenu* menu = new GameMenu(new GameStarter());
 		menu->Run();
-		Console::SetCursorPosition(70,9);
+		Console::SetCursorPosition(0,45);
 		std::cout << "Press ENTER to play again and ESC to end the game" << std::endl;
 		char ans;
 		ans = Console::ReadKey();

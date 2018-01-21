@@ -29,7 +29,7 @@ void BaseGame::DrawHangman(int mistakes)
 {
 	if (mistakes == 1)
 	{
-		Console::SetCursorPosition(30, 38);
+		Console::SetCursorPosition(15, 38);
 		std::cout << Constants::Gibbet1[0];
 	}
 	if (mistakes == 2)
@@ -39,7 +39,7 @@ void BaseGame::DrawHangman(int mistakes)
 		int y = 37;
 		for (auto element : Constants::Gibbet2)
 		{
-			Console::SetCursorPosition(30, y);
+			Console::SetCursorPosition(15, y);
 			std::cout << element;
 			y--;
 		}
@@ -51,7 +51,7 @@ void BaseGame::DrawHangman(int mistakes)
 		int y = 2;
 		for (auto element : Constants::Gibbet3)
 		{
-			Console::SetCursorPosition(38, y);
+			Console::SetCursorPosition(23, y);
 			std::cout << element;
 			y--;
 		}
@@ -63,7 +63,7 @@ void BaseGame::DrawHangman(int mistakes)
 		int y = 3;
 		for (auto element : Constants::Gibbet4)
 		{
-			Console::SetCursorPosition(39, y);
+			Console::SetCursorPosition(24, y);
 			std::cout << element;
 			y++;
 		}
@@ -75,7 +75,7 @@ void BaseGame::DrawHangman(int mistakes)
 		int y = 5;
 		for (auto element : Constants::HangmanHead)
 		{
-			Console::SetCursorPosition(41, y);
+			Console::SetCursorPosition(26, y);
 			std::cout << element;
 			y++;
 		}
@@ -87,28 +87,36 @@ void BaseGame::DrawHangman(int mistakes)
 		int y = 12;
 		for (auto element : Constants::HangmanHands)
 		{
-			Console::SetCursorPosition(40, y);
+			Console::SetCursorPosition(25, y);
 			std::cout << element;
 			y++;
 		}
 	}
 	if (mistakes == 7)
 	{
+
 		DrawHangman(mistakes - 1);
 
 		int y = 25;
 		for (auto element : Constants::HangmanLegs)
 		{
-			Console::SetCursorPosition(40, y);
+			Console::SetCursorPosition(25, y);
 			std::cout << element;
 			y++;
 		}
-		Console::SetCursorPosition(56, 8);
+		Console::SetCursorPosition(41, 8);
 		std::cout << "X";
-		Console::SetCursorPosition(59, 8);
+		Console::SetCursorPosition(44, 8);
 		std::cout << "X";
-		Console::SetCursorPosition(70, 8);
-		std::cout << "DEAD!";
+		Console::SetCursorPosition(58, 8);
+		std::cout << "Yo Man R U DEAD?!?!!";
+	
+		
+		for (int i = 0; i < Constants::Logan.size(); i++)
+		{
+			Console::SetCursorPosition(58, 10+i);
+			std::cout << Constants::Logan[i] << std::endl;
+		}
 	}
 }
 
