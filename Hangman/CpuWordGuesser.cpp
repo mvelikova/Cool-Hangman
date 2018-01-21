@@ -28,7 +28,6 @@ void CpuWordGuesser::AddLetterToUsed(char letter)
 
 void CpuWordGuesser::SetHiddenWord(std::string word)
 {
-	
 	this->hidden_word = word;
 }
 
@@ -64,48 +63,53 @@ void CpuWordGuesser::FillterByAnswerAndLetter(char letter, char ans)
 	else
 	{
 		wordsManager->FilterByMissingChar(Helpers::current_game_words, letter);
-	
 	}
 	AddLetterToUsed(letter);
 }
 
 char CpuWordGuesser::SuggestLetter1() //50/50
 {
-	std::vector<int> averageUsedLetters;
 	if (Helpers::current_game_words.size() == 0)
 	{
-		averageUsedLetters = wordsManager->GetLettersOccurancesPercents(Helpers::all_words,used_letters);
+		for (char letter : Helpers::orderedLettersByFrequencry)
+		{
+			if (this->used_letters.find(letter) == this->used_letters.end())
+			{
+				return letter;
+			}
+		}
 	}
 	else
 	{
-		averageUsedLetters = wordsManager->GetLettersOccurancesPercents(Helpers::current_game_words,used_letters);//not ordered
-	}
+		std::vector<int> averageUsedLetters;
+		averageUsedLetters = wordsManager->GetLettersOccurancesPercents(Helpers::current_game_words, used_letters);
+		//not ordered
 
+		int minimalDiffIndex = 0;
 
-	int minimalDiffIndex = 0;
-
-	for (int i = 0; i < averageUsedLetters.size(); ++i)
-	{
-		if (this->used_letters.find(i + 97) == this->used_letters.end())
+		for (int i = 0; i < averageUsedLetters.size(); ++i)
 		{
-			minimalDiffIndex = i;
-			break;
+			if (this->used_letters.find(i + 97) == this->used_letters.end())
+			{
+				minimalDiffIndex = i;
+				break;
+			}
 		}
-	}
-	for (int i = 1; i < averageUsedLetters.size(); ++i)
-	{
-		if (this->used_letters.find(i + 97) == this->used_letters.end() && 50 - averageUsedLetters[i] <50 -
-			averageUsedLetters[
-				minimalDiffIndex])
+		for (int i = 1; i < averageUsedLetters.size(); ++i)
 		{
-			minimalDiffIndex = i;
+			if (this->used_letters.find(i + 97) == this->used_letters.end() && 50 - averageUsedLetters[i] < 50 -
+				averageUsedLetters[
+					minimalDiffIndex])
+			{
+				minimalDiffIndex = i;
+			}
 		}
-	}
 
-	return minimalDiffIndex + 97;
+		return minimalDiffIndex + 97;
+	}
 }
 
 char CpuWordGuesser::SuggestLetter2()
 {
-	return wordsManager->GetMostCommonLetter(Helpers::current_game_words,used_letters);
+	return wordsManager->GetMostCommonLetter(Helpers::current_game_words, used_letters);
 }
