@@ -17,12 +17,10 @@ protected:
 	void EndGame() override;
 
 private:
+	CpuWordGuesser * guesser;
+
 	CpuGame();
 
-	CpuWordGuesser* guesser;
-
-	
-	void RunLevelLogic();
 	void GiveStartingLetters();
 	void SetCommonLetterInHiddenWord(char letter);
 	void DrawPlayerWordGuesser(int index) const;

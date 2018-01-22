@@ -5,6 +5,7 @@
 #include "Helpers.h"
 #include "WordsManager.h"
 #include <windows.h>
+#include "Messages.h"
 
 CpuGame::CpuGame(GameLevel game_level)
 {
@@ -28,7 +29,7 @@ void CpuGame::Run()
 	guesser->SetHiddenWord(hidden);
 
 	this->Draw();
-	this->RunLevelLogic();
+	this->GiveStartingLetters();
 
 	Helpers::current_game_words = guesser->FilterBySizeAndLetters();
 
@@ -42,9 +43,8 @@ void CpuGame::Run()
 	{
 		Console::Clear();
 
-		std::cout << "I WON!!!   YOU LOST !!!" << std::endl;
+		std::cout << "I WON!!!  YOU LOST !!!" << std::endl;
 	}
-
 }
 
 void CpuGame::Draw()
@@ -56,11 +56,13 @@ void CpuGame::Draw()
 void CpuGame::Turn()
 {
 	Console::SetCursorPosition(0, 0);
+
 	if (Helpers::current_game_words.size() == 1)
 	{
 		std::string lastWord = *Helpers::current_game_words.begin();
 		std::cout << "Is '" << lastWord << "' your word?" << std::endl;
 		std::cout << "Press y/n" << std::endl;
+
 		char ans;
 		ans = Console::ReadKey();
 
@@ -78,6 +80,7 @@ void CpuGame::Turn()
 		Helpers::current_game_words.clear();
 		return;
 	}
+
 	//Suggest a letter 
 
 	char letter = guesser->SuggestLetter1();
@@ -118,11 +121,6 @@ CpuGame::CpuGame()
 {
 }
 
-void CpuGame::RunLevelLogic()
-{
-	this->GiveStartingLetters();
-}
-
 void CpuGame::GiveStartingLetters()
 {
 	if (this->game_level != GameLevel::Pro)
@@ -153,7 +151,7 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 
 	bool settingLetters = true;
 	DrawPlayerWordGuesser(idx);
-	std::cout <<"Press Enter to continue, Space to change leter" << std::endl;
+	std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
 
 	do
 	{
@@ -173,13 +171,13 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 		case KEY_UP:
 			(idx == 0) ? idx = hidden_word_size - 1 : idx--;
 			DrawPlayerWordGuesser(idx);
-			std::cout << "Press Enter to continue, Space to change leter" << std::endl;
+			std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
 			break;
 		case KEY_RIGHT:
 		case KEY_DOWN:
 			(idx == hidden_word_size - 1) ? idx = 0 : idx++;
 			DrawPlayerWordGuesser(idx);
-			std::cout << "Press Enter to continue, Space to change leter" << std::endl;
+			std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
 			break;
 		case SPACE:
 			//set letter
@@ -193,7 +191,7 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 			}
 
 			DrawPlayerWordGuesser(idx);
-			std::cout << "Press Enter to continue, Space to change leter" << std::endl;
+			std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
 			break;
 		case ENTER:
 			settingLetters = false;

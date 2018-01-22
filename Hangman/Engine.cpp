@@ -9,6 +9,7 @@
 #include "WordsManager.h"
 #include "Helpers.h"
 #include "Console.h"
+#include "Messages.h"
 
 
 Engine::Engine()
@@ -26,30 +27,34 @@ void Engine::Run()
 	std::ifstream ifs(path);
 	InputReader* reader = new InputReader(ifs);
 
-	auto f = std::async(std::launch::async, &InputReader::WriteAll, reader);
+	auto f = std::async(std::launch::async, &InputReader::ReadAll, reader);
 	Helpers::all_words = f.get();
 
 	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
+
 	while (true)
 	{
 		GameMenu* menu = new GameMenu(new GameStarter());
 		menu->Run();
-		Console::SetCursorPosition(0,45);
-		std::cout << "Press ENTER to play again and ESC to end the game" << std::endl;
-		char ans;
-		ans = Console::ReadKey();
 
-		while (ans != ENTER && ans != ESCAPE)
+		Console::SetCursorPosition(0, 45);
+		std::cout << Messages::EnterToPlayEscToEnd << std::endl;
+
+		char c;
+		c = Console::ReadKey();
+
+		while (c != ENTER && c != ESCAPE)
 		{
-			ans = Console::ReadKey();
+			c = Console::ReadKey();
 		}
-		if (ans == ESCAPE)
+
+		if (c == ESCAPE)
 		{
 			Console::Clear();
+			delete menu;
 			break;
 		}
 	}
-
 
 	delete reader;
 }

@@ -14,10 +14,9 @@ public:
 	void Guess(char c);
 	void DisplayHiddenWord();
 	void DisplayUsedLetters();
-	
+	std::string GetWord();
 
 private:
 	GameLevel game_level;
 	std::string word;
-
 };

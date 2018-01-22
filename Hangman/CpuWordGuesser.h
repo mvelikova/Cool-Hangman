@@ -19,7 +19,6 @@ public:
 	char SuggestLetter1(); //suggest a letter 50/50
 	char SuggestLetter2(); //suggest most common letter
 
-
 	private:
 	WordsManager* wordsManager;
 };

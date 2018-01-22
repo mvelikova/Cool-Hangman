@@ -1,4 +1,14 @@
-﻿  PlayerGame.cpp
-c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(64): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\maria\documents\github\cool-hangman\hangman\playergame.cpp(65): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Hangman.vcxproj -> C:\Users\Maria\Documents\GitHub\Cool-Hangman\x64\Debug\Hangman.exe
+﻿  CpuWordGuesser.cpp
+d:\github\cool-hangman\hangman\cpuwordguesser.cpp(37): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  CpuGame.cpp
+d:\github\cool-hangman\hangman\cpugame.h(7): warning C4584: 'CpuGame': base-class 'IDrawable' is already a base-class of 'BaseGame'
+  d:\github\cool-hangman\hangman\idrawable.h(3): note: see declaration of 'IDrawable'
+  d:\github\cool-hangman\hangman\basegame.h(7): note: see declaration of 'BaseGame'
+d:\github\cool-hangman\hangman\cpugame.cpp(140): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\github\cool-hangman\hangman\cpugame.cpp(150): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\github\cool-hangman\hangman\cpugame.cpp(220): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+d:\github\cool-hangman\hangman\cpuwordguesser.cpp(110): warning C4715: 'CpuWordGuesser::SuggestLetter1': not all control paths return a value
+  Skipping... (no relevant changes detected)
+  GameLevel.h
+  Hangman.vcxproj -> D:\Github\Cool-Hangman\x64\Debug\Hangman.exe

@@ -5,14 +5,13 @@
 #include <windows.h>
 #include "Constants.h"
 #include "PlayerWordGuesser.h"
-
+#include "Messages.h"
 
 PlayerGame::PlayerGame(GameLevel game_level) : BaseGame(game_level)
 {
 	std::string word = ChooseWord();
 	guesser = new PlayerWordGuesser(word, this->game_level);
 }
-
 
 PlayerGame::~PlayerGame()
 {
@@ -23,7 +22,6 @@ void PlayerGame::Run()
 {
 	BaseGame::Run();
 
-
 	guesser->Initialize(this->game_level);
 
 	while (!guesser->WordIsGuessed() && !guesser->AllMistakesAreMade())
@@ -33,14 +31,13 @@ void PlayerGame::Run()
 	if (guesser->AllMistakesAreMade())
 	{
 		Draw();
+		std::cout << Messages::WordWas << this->guesser->GetWord();
 	}
 	else
 	{
 		Console::Clear();
-		std::cout << "You WON!" << std::endl;
+		std::cout << Messages::YouWon << std::endl;
 	}
-
-	//game logic
 }
 
 void PlayerGame::Draw()
@@ -62,40 +59,42 @@ std::string PlayerGame::ChooseWord()
 {
 	std::set<std::string> words = Helpers::all_words;
 	int wordsCount = words.size();
+
 	srand(time(NULL));
 	int randomIndex = rand() % wordsCount;
-	std::set<std::string>::const_iterator it(words.begin());
 
+	std::set<std::string>::const_iterator it(words.begin());
 	advance(it, randomIndex);
+
 	return *it;
 }
 
 void PlayerGame::Turn()
 {
-	this->Draw();
-	std::cout << "Please enter a letter: ";
-
-	char c;
-	c = Console::ReadKey();
-
-	bool isUpper = c >= 65 && c <= 90;
-	bool isLower = c >= 97 && c <= 122;
-
-	while (!(isUpper || isLower)) // not a letter
+	//read character until its valid
+	while (true)
 	{
-		std::cin >> c;
-
 		this->Draw();
-		std::cout << "Please enter a single letter: ";
-	}
+		std::cout << Messages::EnterLetter;
 
-	if (isUpper)
-	{
-		//if upper
-		c += 32;
-	}
+		char c;
+		c = Console::ReadKey();
 
-	guesser->Guess(c);
+		bool isUpper = c >= 65 && c <= 90;
+		bool isLower = c >= 97 && c <= 122;
+
+		if (isUpper)
+		{
+			//if upper
+			c += 32;
+		}
+
+		if ((isUpper || isLower))
+		{
+			guesser->Guess(c);
+			break;
+		}
+	}
 }
 
 void PlayerGame::EndGame()

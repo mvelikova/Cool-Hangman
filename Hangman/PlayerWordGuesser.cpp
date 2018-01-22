@@ -48,7 +48,7 @@ void PlayerWordGuesser::Guess(char c)
 	}
 
 	this->used_letters.insert(c);
-	
+
 	bool isFound = false;
 	std::vector<int> charLocations = IndexesOf(this->word, c);
 
@@ -58,16 +58,12 @@ void PlayerWordGuesser::Guess(char c)
 		isFound = true;
 		this->hidden_word[charLocations[i]] = c;
 	}
-	
+
 	if (!isFound)
 	{
 		mistakes++;
 	}
 }
-
-
-
-
 
 void PlayerWordGuesser::DisplayHiddenWord()
 {
@@ -89,4 +85,9 @@ void PlayerWordGuesser::DisplayUsedLetters()
 	}
 
 	std::cout << std::endl;
+}
+
+std::string PlayerWordGuesser::GetWord()
+{
+	return this->word;
 }

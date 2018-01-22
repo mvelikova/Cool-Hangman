@@ -37,6 +37,18 @@
     <Filter Include="Source Files\Games">
       <UniqueIdentifier>{06785983-d1ef-4a67-beaa-6d42b424d87c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Infrastructure\Guessers">
+      <UniqueIdentifier>{4574c100-d9ff-4992-a165-3aac495865a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrastructure\Guessers">
+      <UniqueIdentifier>{3213e78e-bbc2-422d-8c29-284fa672163f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infrastructure\Utilities">
+      <UniqueIdentifier>{623abcec-b021-42a5-9a3f-9f8498da40f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrastructure\Utilities">
+      <UniqueIdentifier>{36721a37-6603-4fc1-a3bb-0806936d7141}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -45,23 +57,8 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Constants.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
-    </ClCompile>
-    <ClCompile Include="Console.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
-    </ClCompile>
     <ClCompile Include="InputReader.cpp">
       <Filter>Source Files\Services</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStarter.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CpuGame.cpp">
       <Filter>Source Files\Games</Filter>
@@ -79,44 +76,44 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Guesser.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerWordGuesser.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
+      <Filter>Source Files\Infrastructure\Guessers</Filter>
     </ClCompile>
     <ClCompile Include="CpuWordGuesser.cpp">
-      <Filter>Source Files\Infrastructure</Filter>
+      <Filter>Source Files\Infrastructure\Guessers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerWordGuesser.cpp">
+      <Filter>Source Files\Infrastructure\Guessers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStarter.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Source Files\Infrastructure\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Source Files\Infrastructure\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers.cpp">
+      <Filter>Source Files\Infrastructure\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages.cpp">
+      <Filter>Source Files\Infrastructure\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Header Files\Infrastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers.h">
-      <Filter>Header Files\Infrastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="Console.h">
-      <Filter>Header Files\Infrastructure</Filter>
-    </ClInclude>
     <ClInclude Include="InputReader.h">
       <Filter>Header Files\Services</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStarter.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameType.h">
       <Filter>Header Files\Enums</Filter>
     </ClInclude>
     <ClInclude Include="IDrawable.h">
-      <Filter>Header Files\Contracts</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseGame.h">
       <Filter>Header Files\Contracts</Filter>
     </ClInclude>
     <ClInclude Include="IRunnable.h">
@@ -131,14 +128,35 @@
     <ClInclude Include="WordsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Guesser.h">
-      <Filter>Header Files\Infrastructure</Filter>
+    <ClInclude Include="GameMenu.h">
+      <Filter>Header Files\Games</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerWordGuesser.h">
-      <Filter>Header Files\Infrastructure</Filter>
+    <ClInclude Include="GameStarter.h">
+      <Filter>Header Files\Games</Filter>
     </ClInclude>
     <ClInclude Include="CpuWordGuesser.h">
-      <Filter>Header Files\Infrastructure</Filter>
+      <Filter>Header Files\Infrastructure\Guessers</Filter>
+    </ClInclude>
+    <ClInclude Include="Guesser.h">
+      <Filter>Header Files\Infrastructure\Guessers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerWordGuesser.h">
+      <Filter>Header Files\Infrastructure\Guessers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGame.h">
+      <Filter>Header Files\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Header Files\Infrastructure\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files\Infrastructure\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers.h">
+      <Filter>Header Files\Infrastructure\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages.h">
+      <Filter>Header Files\Infrastructure\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

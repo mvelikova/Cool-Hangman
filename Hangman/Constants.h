@@ -32,7 +32,6 @@ public:
 	static const std::vector<std::string> HangmanTitle;
 	static const std::vector<std::string> Logan;
 
-
 private:
 	// Disallow creating an instance of this object
 	Constants() {}

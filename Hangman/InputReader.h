@@ -9,5 +9,5 @@ private:
 public:
 	InputReader(std::ifstream& istream);
 	~InputReader();
-	std::set<std::string> WriteAll() const;
+	std::set<std::string> ReadAll() const;
 };

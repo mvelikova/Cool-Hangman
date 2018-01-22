@@ -127,6 +127,7 @@
     <ClCompile Include="Helpers.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="GameMenu.cpp" />
+    <ClCompile Include="Messages.cpp" />
     <ClCompile Include="PlayerGame.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="PlayerWordGuesser.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="IRunnable.h" />
+    <ClInclude Include="Messages.h" />
     <ClInclude Include="PlayerGame.h" />
     <ClInclude Include="PlayerWordGuesser.h" />
     <ClInclude Include="WordsManager.h" />

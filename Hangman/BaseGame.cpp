@@ -11,8 +11,6 @@ BaseGame::BaseGame(GameLevel game_level)
 	this->points = 0;
 	this->secondsElapsed = 0;
 	this->game_level = game_level;
-
-	
 }
 
 BaseGame::~BaseGame()
@@ -111,7 +109,6 @@ void BaseGame::DrawHangman(int mistakes)
 		Console::SetCursorPosition(58, 8);
 		std::cout << "Yo Man R U DEAD?!?!!";
 	
-		
 		for (int i = 0; i < Constants::Logan.size(); i++)
 		{
 			Console::SetCursorPosition(58, 10+i);
