@@ -3,6 +3,8 @@
 #include <set>
 #include <iostream>
 #include <map>
+#include <string>
+#include "Helpers.h"
 
 InputReader::InputReader(std::ifstream& istream) : ifs(istream)
 {
@@ -12,12 +14,9 @@ InputReader::~InputReader()
 {
 }
 
-std::map<size_t, std::set<std::string>> InputReader::ReadAll() const
+WordsBySize InputReader::ReadAll(WordsBySize& result) const
 {
 	std::cout << "STARTING" << std::endl; // debug
-
-	//	std::set<std::string> result;
-	std::map<size_t, std::set<std::string>> result;
 
 	std::string word;
 	while (ifs >> word)

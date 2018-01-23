@@ -28,6 +28,6 @@ void Helpers::DrawCursor(int index, int indexes, int delimiters)
 	std::cout << std::endl;
 }
 
-std::map<size_t, std::set<std::string>> Helpers::all_words;
+WordsBySize Helpers::all_words;
 std::set<std::string> Helpers::current_game_words;
 std::string Helpers::orderedLettersByFrequencry = "etaoinshrdlcumwfgypbvkjxqz";

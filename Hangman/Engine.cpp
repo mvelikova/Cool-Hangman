@@ -27,8 +27,9 @@ void Engine::Run()
 	std::ifstream ifs(path);
 	InputReader* reader = new InputReader(ifs);
 
-	auto f = std::async(std::launch::async, &InputReader::ReadAll, reader);
-	Helpers::all_words = f.get();
+	//this should start an async function on a new thread that populates all_words
+	//try and start it without awaiting with f.get()
+	std::future<WordsBySize> f = std::async(std::launch::async | std::launch::deferred, [&reader] { return reader->ReadAll(Helpers::all_words); });
 
 	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
 

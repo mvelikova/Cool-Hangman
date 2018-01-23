@@ -1,7 +1,6 @@
 #pragma once
-#include <string>
-#include <set>
 #include <map>
+#include "Helpers.h"
 
 class InputReader
 {
@@ -10,5 +9,5 @@ private:
 public:
 	InputReader(std::ifstream& istream);
 	~InputReader();
-	std::map<size_t, std::set<std::string>> ReadAll() const;
+	WordsBySize ReadAll(WordsBySize& result) const;
 };

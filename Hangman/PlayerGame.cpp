@@ -61,7 +61,7 @@ std::string PlayerGame::ChooseWord()
 	int wordLengthsCount = Helpers::all_words.size();
 	int randomIndex = rand() % wordLengthsCount;
 
-	std::map<size_t, std::set<std::string>>::const_iterator it(Helpers::all_words.begin());
+	WordsBySize::const_iterator it(Helpers::all_words.begin());
 	std::advance(it, randomIndex);
 
 	std::set<std::string> wordsOnRandomIndex = it->second;
