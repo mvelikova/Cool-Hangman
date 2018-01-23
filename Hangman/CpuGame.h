@@ -21,6 +21,9 @@ private:
 
 	CpuGame();
 
+	void SuggestLetter();
+	bool SuggestWord();
+
 	void GiveStartingLetters();
 	void SetCommonLetterInHiddenWord(char letter);
 	void DrawPlayerWordGuesser(int index) const;

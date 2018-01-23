@@ -71,7 +71,7 @@ std::vector<int> WordsManager::GetLettersOccurancesPercents(const std::set<std::
 
 	for (int i = 0; i < english_alphabet_size; ++i)
 	{
-		characterOccurances[i] = (characterOccurances[i] * 100) / Helpers::current_game_words.size();
+		characterOccurances[i] = (characterOccurances[i] * 100) / WordsManager::current_game_words.size();
 	}
 	std::vector<int> res(characterOccurances,
 	                     characterOccurances + sizeof characterOccurances / sizeof characterOccurances[0]);

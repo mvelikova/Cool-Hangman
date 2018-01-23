@@ -21,6 +21,8 @@
 #define GAME_LEVEL_2 "Advanced"
 #define GAME_LEVEL_3 "Pro"
 
+#define HANGMAN_DRAWING_START_Y 40
+
 class Constants
 {
 public:

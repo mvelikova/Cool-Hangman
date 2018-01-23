@@ -5,6 +5,12 @@
 #include <windows.h>
 #include "PlayerWordGuesser.h"
 #include "Messages.h"
+#include "WordsManager.h"
+
+PlayerGame::PlayerGame()
+{
+}
+
 
 PlayerGame::PlayerGame(GameLevel game_level) : BaseGame(game_level)
 {
@@ -49,19 +55,17 @@ void PlayerGame::Draw()
 	std::cout << guesser->GetMistakes() << std::endl;
 
 	DrawHangman(guesser->GetMistakes());
-	Console::SetCursorPosition(0, 5);
-
-	std::cout << std::endl;
+	Console::SetCursorPosition(0, 6);
 }
 
 std::string PlayerGame::ChooseWord()
 {
 	srand(time(NULL));
 
-	int wordLengthsCount = Helpers::all_words.size();
+	int wordLengthsCount = WordsManager::all_words.size();
 	int randomIndex = rand() % wordLengthsCount;
 
-	WordsBySize::const_iterator it(Helpers::all_words.begin());
+	WordsBySize::const_iterator it(WordsManager::all_words.begin());
 	std::advance(it, randomIndex);
 
 	std::set<std::string> wordsOnRandomIndex = it->second;
@@ -104,8 +108,4 @@ void PlayerGame::Turn()
 void PlayerGame::EndGame()
 {
 	BaseGame::EndGame();
-}
-
-PlayerGame::PlayerGame()
-{
 }

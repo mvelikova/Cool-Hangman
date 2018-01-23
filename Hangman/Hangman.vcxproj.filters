@@ -102,6 +102,9 @@
     <ClCompile Include="Messages.cpp">
       <Filter>Source Files\Infrastructure\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="InputWriter.cpp">
+      <Filter>Source Files\Services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Messages.h">
       <Filter>Header Files\Infrastructure\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="InputWriter.h">
+      <Filter>Header Files\Services</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

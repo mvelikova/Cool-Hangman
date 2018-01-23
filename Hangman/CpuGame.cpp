@@ -4,6 +4,7 @@
 #include "Console.h"
 #include "Helpers.h"
 #include "Messages.h"
+#include "InputWriter.h"
 
 CpuGame::CpuGame(GameLevel game_level)
 {
@@ -29,7 +30,7 @@ void CpuGame::Run()
 	this->Draw();
 	this->GiveStartingLetters();
 
-	Helpers::current_game_words = guesser->FilterBySizeAndLetters();
+	WordsManager::current_game_words = guesser->FilterBySizeAndLetters();
 
 	while (!GameShouldEnd())
 	{
@@ -37,12 +38,43 @@ void CpuGame::Run()
 		Turn();
 	}
 
+	std::string path = "..\\" + Constants::DictionaryFilePath;
+	std::ofstream ofs;
+	InputWriter* ir = new InputWriter(ofs);
+
+	Console::Clear();
+
 	if (guesser->WordIsGuessed())
 	{
-		Console::Clear();
-
 		std::cout << Messages::CpuWon << std::endl;
+
+		//cpu guessed word that is not in file
+		if (WordsManager::current_game_words.size() == 0)
+		{
+			std::cout << Messages::CpuGuessedNonExistentWord << std::endl;
+			std::string word = this->guesser->GetHiddenWord();
+			ir->Write(word, path); //write word to file
+			WordsManager::all_words[word.size()].insert(word); //write to in-memory dictionary
+		}
 	}
+	else if (WordsManager::current_game_words.size() == 0) //cpu couldn't guess the word
+	{
+		std::cout << Messages::WhatWasTheWord << std::endl;
+		this->DrawHangman(this->guesser->GetMistakes());
+
+		std::string word;
+		std::cin >> word;
+
+		ir->Write(word, path); //write word to file
+		WordsManager::all_words[word.size()].insert(word); //write to in-memory dictionary
+	}
+	else
+	{
+		std::cout << Messages::CpuLost << std::endl;
+		this->DrawHangman(this->guesser->GetMistakes());
+	}
+
+	delete ir;
 }
 
 void CpuGame::Draw()
@@ -51,38 +83,10 @@ void CpuGame::Draw()
 	this->DrawHangman(guesser->GetMistakes());
 }
 
-void CpuGame::Turn()
+void CpuGame::SuggestLetter()
 {
-	Console::SetCursorPosition(0, 0);
-
-	if (Helpers::current_game_words.size() == 1)
-	{
-		std::string lastWord = *Helpers::current_game_words.begin();
-		std::cout << "Is '" << lastWord << "' your word?" << std::endl;
-		std::cout << Messages::PressYorN << std::endl;
-
-		char ans;
-		ans = Console::ReadKey();
-
-		while (ans != 'y' && ans != 'n')
-		{
-			ans = Console::ReadKey();
-		}
-
-		if (ans == 'y')
-		{
-			guesser->SetHiddenWord(lastWord);
-			return;
-		}
-
-		Helpers::current_game_words.clear();
-		return;
-	}
-
-	//Suggest a letter 
-
 	char letter = guesser->SuggestMostAverageLetter();
-	//char letter = guesser->SuggestLetter2();
+	//	char letter = guesser->SuggestMostCommonLetter();
 
 	std::cout << "Is there a letter '" << letter << "' ?" << std::endl;
 	std::cout << Messages::PressYorN << std::endl;
@@ -102,11 +106,67 @@ void CpuGame::Turn()
 	else { guesser->addMistake(); }
 	guesser->AddLetterToUsed(letter);
 
-	if (Helpers::current_game_words.size() > 1)
+	//more than one words left
+	if (WordsManager::current_game_words.size() > 1)
 	{
 		guesser->FillterByAnswerAndLetter(letter, ans);
 	}
+}
 
+/**
+ * \brief CPU suggests a whole word when the current_game_words is filtered down to a single word.
+ * \return true - if the word is what the player thinks of, false - if not
+ */
+bool CpuGame::SuggestWord()
+{
+	std::string lastWord = *WordsManager::current_game_words.begin();
+	std::cout << "Is '" << lastWord << "' your word?" << std::endl;
+	std::cout << Messages::PressYorN << std::endl;
+
+	char ans;
+	ans = Console::ReadKey();
+
+	while (ans != 'y' && ans != 'n')
+	{
+		ans = Console::ReadKey();
+	}
+
+	if (ans == 'y')
+	{
+		return true;
+	}
+
+	WordsManager::current_game_words.clear();
+	return false;
+}
+
+void CpuGame::Turn()
+{
+	Console::SetCursorPosition(0, 0);
+
+	//one word left
+	if (WordsManager::current_game_words.size() == 1)
+	{
+		if (this->SuggestWord())
+		{
+			std::string lastWord = *WordsManager::current_game_words.begin();
+			guesser->SetHiddenWord(lastWord);
+			return;
+		}
+		else //the word suggested is not what the player thought of
+		{
+			this->guesser->addMistake();
+
+			Console::Clear();
+
+			this->DrawHangman(guesser->GetMistakes());
+
+			Console::SetCursorPosition(0, 0);
+		}
+	}
+
+	//more than one words left
+	this->SuggestLetter();
 	this->DrawHangman(guesser->GetMistakes());
 }
 
@@ -149,7 +209,7 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 
 	bool settingLetters = true;
 	DrawPlayerWordGuesser(idx);
-	std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
+	std::cout << Messages::NavigationControls << std::endl;
 
 	do
 	{
@@ -169,13 +229,13 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 		case KEY_UP:
 			(idx == 0) ? idx = hidden_word_size - 1 : idx--;
 			DrawPlayerWordGuesser(idx);
-			std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
+			std::cout << Messages::NavigationControls << std::endl;
 			break;
 		case KEY_RIGHT:
 		case KEY_DOWN:
 			(idx == hidden_word_size - 1) ? idx = 0 : idx++;
 			DrawPlayerWordGuesser(idx);
-			std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
+			std::cout << Messages::NavigationControls << std::endl;
 			break;
 		case SPACE:
 			//set letter
@@ -189,7 +249,7 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 			}
 
 			DrawPlayerWordGuesser(idx);
-			std::cout << Messages::EnterToContinueSpaceToRemoveLetter << std::endl;
+			std::cout << Messages::NavigationControls << std::endl;
 			break;
 		case ENTER:
 			settingLetters = false;

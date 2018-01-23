@@ -6,10 +6,10 @@
 #include <thread>
 #include <future>
 #include "GameMenu.h"
-#include "WordsManager.h"
 #include "Helpers.h"
 #include "Console.h"
 #include "Messages.h"
+#include "WordsManager.h"
 
 
 Engine::Engine()
@@ -27,9 +27,7 @@ void Engine::Run()
 	std::ifstream ifs(path);
 	InputReader* reader = new InputReader(ifs);
 
-	//this should start an async function on a new thread that populates all_words
-	//try and start it without awaiting with f.get()
-	std::future<WordsBySize> f = std::async(std::launch::async | std::launch::deferred, [&reader] { return reader->ReadAll(Helpers::all_words); });
+	std::future<WordsBySize> f = std::async(std::launch::async, [&reader] { return reader->ReadAll(WordsManager::all_words); });
 
 	Console::SetSize(CONSOLE_WIDTH, CONSOLE_HEIGHT);
 
@@ -56,6 +54,11 @@ void Engine::Run()
 			break;
 		}
 	}
+
+	//await the thread in order to not get its destructor called very early
+	//and in order to synchronize all threads before 
+	//which would've led to a synchronous-like behaviour
+	f.get();
 
 	delete reader;
 }

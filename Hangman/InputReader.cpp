@@ -1,7 +1,6 @@
 #include "InputReader.h"
 #include <fstream>
 #include <set>
-#include <iostream>
 #include <map>
 #include <string>
 #include "Helpers.h"
@@ -16,8 +15,6 @@ InputReader::~InputReader()
 
 WordsBySize InputReader::ReadAll(WordsBySize& result) const
 {
-	std::cout << "STARTING" << std::endl; // debug
-
 	std::string word;
 	while (ifs >> word)
 	{

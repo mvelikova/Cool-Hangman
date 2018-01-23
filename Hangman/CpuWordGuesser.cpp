@@ -33,7 +33,7 @@ void CpuWordGuesser::SetHiddenWord(std::string word)
 std::set<std::string> CpuWordGuesser::FilterBySizeAndLetters()
 {
 	//filter by size
-	std::set<std::string> filtered = Helpers::all_words[this->hidden_word.size()];
+	std::set<std::string> filtered = WordsManager::all_words[this->hidden_word.size()];
 
 	//filter by  first and last letter if present
 	char letter = this->hidden_word[0];
@@ -57,20 +57,20 @@ void CpuWordGuesser::FillterByAnswerAndLetter(char letter, char ans)
 	if (ans == 'y')
 	{
 		std::vector<int> indexes = IndexesOf(hidden_word, letter);
-		wordsManager->Filter(Helpers::current_game_words, letter, indexes); //update filtered by letter with indexes
+		wordsManager->Filter(WordsManager::current_game_words, letter, indexes); //update filtered by letter with indexes
 	}
 	else
 	{
-		wordsManager->FilterByMissingChar(Helpers::current_game_words, letter);
+		wordsManager->FilterByMissingChar(WordsManager::current_game_words, letter);
 	}
 	AddLetterToUsed(letter);
 }
 
 char CpuWordGuesser::SuggestMostAverageLetter() //50/50
 {
-	if (Helpers::current_game_words.size() == 0)
+	if (WordsManager::current_game_words.size() == 0)
 	{
-		for (char letter : Helpers::orderedLettersByFrequencry)
+		for (char letter : WordsManager::orderedLettersByFrequencry)
 		{
 			if (this->used_letters.find(letter) == this->used_letters.end())
 			{
@@ -81,7 +81,7 @@ char CpuWordGuesser::SuggestMostAverageLetter() //50/50
 	else
 	{
 		std::vector<int> averageUsedLetters;
-		averageUsedLetters = wordsManager->GetLettersOccurancesPercents(Helpers::current_game_words, used_letters);
+		averageUsedLetters = wordsManager->GetLettersOccurancesPercents(WordsManager::current_game_words, used_letters);
 		//not ordered
 
 		int minimalDiffIndex = 0;
@@ -110,5 +110,5 @@ char CpuWordGuesser::SuggestMostAverageLetter() //50/50
 
 char CpuWordGuesser::SuggestMostCommonLetter()
 {
-	return wordsManager->GetMostCommonLetter(Helpers::current_game_words, used_letters);
+	return wordsManager->GetMostCommonLetter(WordsManager::current_game_words, used_letters);
 }
