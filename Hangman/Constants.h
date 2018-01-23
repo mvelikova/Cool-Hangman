@@ -17,19 +17,25 @@
 #define CONSOLE_HEIGHT 60
 
 #define GAME_TITLE "Cool hangman"
+#define GAME_LEVEL_1 "Easy"
+#define GAME_LEVEL_2 "Advanced"
+#define GAME_LEVEL_3 "Pro"
 
 class Constants
 {
 public:
 	static const std::string DictionaryFilePath;
+
 	static const std::vector<std::string> HangmanHead;
 	static const std::vector<std::string> HangmanHands;
 	static const std::vector<std::string> HangmanLegs;
+
 	static const std::vector<std::string> Gibbet1;
 	static const std::vector<std::string> Gibbet2;
 	static const std::vector<std::string> Gibbet3;
 	static const std::vector<std::string> Gibbet4;
-	static const std::vector<std::string> HangmanTitle;
+
+	static const std::vector<std::string> HangmanTitleDrawing;
 	static const std::vector<std::string> Logan;
 
 private:

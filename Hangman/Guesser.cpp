@@ -47,7 +47,7 @@ std::vector<int> Guesser::IndexesOf(std::string word, char a)
 
 bool Guesser::WordIsGuessed()
 {
-	if (this->hidden_word.find('_') == std::string::npos)
+	if (this->hidden_word.find(WORD_GUESSER_HIDDEN_CHAR) == std::string::npos)
 	{
 		return true;
 	}

@@ -40,25 +40,18 @@ void WordsManager::FilterByMissingChar(std::set<std::string>& words, char a)
 	words = result;
 }
 
-std::vector<int> WordsManager::GetLettersOccurancesPercents(const std::set<std::string>& words, std::set<char> used_letters)
+std::vector<int> WordsManager::GetLettersOccurancesPercents(const std::set<std::string>& words,
+                                                            std::set<char> used_letters)
 {
 	const int lowercase_offset = 97;
 	const int english_alphabet_size = 26;
 	double characterOccurances[english_alphabet_size] = {0};
 
-//	for (auto word : words)
-//	{
-//		for (auto character : word)
-//		{
-//			int idx = character - lowercase_offset;
-//			characterOccurances[idx]++;
-//		}
-//	}
-	for (int j=0;j<26;j++)
+	for (int j = 0; j < 26; j++)
 	{
 		for (auto word : words)
 		{
-			if (word.find(j+lowercase_offset) != std::string::npos)
+			if (word.find(j + lowercase_offset) != std::string::npos)
 			{
 				characterOccurances[j]++;
 			}
@@ -73,7 +66,7 @@ std::vector<int> WordsManager::GetLettersOccurancesPercents(const std::set<std::
 	{
 		sum += characterOccurances[i];
 	}
-//	double percentOfSum = 100.0 / sum;
+
 	int smallestDiffIndex = 0;
 
 	for (int i = 0; i < english_alphabet_size; ++i)
@@ -104,16 +97,17 @@ char WordsManager::GetMostCommonLetter(const std::set<std::string>& words, std::
 	char maxLetterIdx;
 	for (int i = 0; i < english_alphabet_size; ++i)
 	{
-		if (used_letters.find(i+lowercase_offset)==used_letters.end())
+		if (used_letters.find(i + lowercase_offset) == used_letters.end())
 		{
 			maxLetterIdx = i;
 			break;
 		}
 	}
 
-	for (int i = maxLetterIdx+1; i < english_alphabet_size; ++i)
+	for (int i = maxLetterIdx + 1; i < english_alphabet_size; ++i)
 	{
-		if (characterOccurances[i] > characterOccurances[maxLetterIdx] && used_letters.find(i + lowercase_offset) == used_letters.end())
+		if (characterOccurances[i] > characterOccurances[maxLetterIdx] && used_letters.find(i + lowercase_offset) ==
+			used_letters.end())
 		{
 			maxLetterIdx = i;
 		}
@@ -138,14 +132,14 @@ void WordsManager::Filter(std::set<std::string>& words, char a, std::vector<int>
 			}
 		}
 		int letterCount = 0;
-		for (int i=0;i<word.size();i++)
+		for (int i = 0; i < word.size(); i++)
 		{
-			if (word[i]==a)
+			if (word[i] == a)
 			{
 				letterCount++;
 			}
 		}
-		if (letterCount!=charPositions.size())
+		if (letterCount != charPositions.size())
 		{
 			allMatch = false;
 		}

@@ -10,7 +10,6 @@ CpuWordGuesser::CpuWordGuesser()
 	hidden_word = "";
 }
 
-
 CpuWordGuesser::~CpuWordGuesser()
 {
 	delete wordsManager;
@@ -34,18 +33,18 @@ void CpuWordGuesser::SetHiddenWord(std::string word)
 std::set<std::string> CpuWordGuesser::FilterBySizeAndLetters()
 {
 	//filter by size
-	std::set<std::string> filtered = wordsManager->Filter(Helpers::all_words, this->hidden_word.size());
+	std::set<std::string> filtered = Helpers::all_words[this->hidden_word.size()];
 
 	//filter by  first and last letter if present
 	char letter = this->hidden_word[0];
 	std::vector<int> indexes;
-	if (letter != '_')
+	if (letter != WORD_GUESSER_HIDDEN_CHAR)
 	{
 		indexes = IndexesOf(hidden_word, letter);
 		wordsManager->Filter(filtered, letter, indexes); //update filtered by letter with indexes
 	}
 	letter = this->hidden_word.back();
-	if (letter != '_' && letter != this->hidden_word[0])
+	if (letter != WORD_GUESSER_HIDDEN_CHAR && letter != this->hidden_word[0])
 	{
 		indexes = IndexesOf(hidden_word, letter);
 		wordsManager->Filter(filtered, letter, indexes); //update filtered by letter with indexes
@@ -67,7 +66,7 @@ void CpuWordGuesser::FillterByAnswerAndLetter(char letter, char ans)
 	AddLetterToUsed(letter);
 }
 
-char CpuWordGuesser::SuggestLetter1() //50/50
+char CpuWordGuesser::SuggestMostAverageLetter() //50/50
 {
 	if (Helpers::current_game_words.size() == 0)
 	{
@@ -109,7 +108,7 @@ char CpuWordGuesser::SuggestLetter1() //50/50
 	}
 }
 
-char CpuWordGuesser::SuggestLetter2()
+char CpuWordGuesser::SuggestMostCommonLetter()
 {
 	return wordsManager->GetMostCommonLetter(Helpers::current_game_words, used_letters);
 }

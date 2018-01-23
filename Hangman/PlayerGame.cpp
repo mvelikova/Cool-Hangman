@@ -3,7 +3,6 @@
 #include "Helpers.h"
 #include "Console.h"
 #include <windows.h>
-#include "Constants.h"
 #include "PlayerWordGuesser.h"
 #include "Messages.h"
 
@@ -57,16 +56,21 @@ void PlayerGame::Draw()
 
 std::string PlayerGame::ChooseWord()
 {
-	std::set<std::string> words = Helpers::all_words;
-	int wordsCount = words.size();
-
 	srand(time(NULL));
-	int randomIndex = rand() % wordsCount;
 
-	std::set<std::string>::const_iterator it(words.begin());
-	advance(it, randomIndex);
+	int wordLengthsCount = Helpers::all_words.size();
+	int randomIndex = rand() % wordLengthsCount;
 
-	return *it;
+	std::map<size_t, std::set<std::string>>::const_iterator it(Helpers::all_words.begin());
+	std::advance(it, randomIndex);
+
+	std::set<std::string> wordsOnRandomIndex = it->second;
+	int randomWordIndex = rand() % wordsOnRandomIndex.size();
+
+	std::set<std::string>::const_iterator s_it(wordsOnRandomIndex.begin());
+	std::advance(s_it, randomWordIndex);
+
+	return *s_it;
 }
 
 void PlayerGame::Turn()

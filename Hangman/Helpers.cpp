@@ -1,5 +1,6 @@
 #include "Helpers.h"
 #include <iostream>
+#include <map>
 
 Helpers::Helpers()
 {
@@ -27,6 +28,6 @@ void Helpers::DrawCursor(int index, int indexes, int delimiters)
 	std::cout << std::endl;
 }
 
-std::set<std::string> Helpers::all_words;
+std::map<size_t, std::set<std::string>> Helpers::all_words;
 std::set<std::string> Helpers::current_game_words;
 std::string Helpers::orderedLettersByFrequencry = "etaoinshrdlcumwfgypbvkjxqz";

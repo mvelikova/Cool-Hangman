@@ -15,10 +15,9 @@ public:
 	std::set<std::string> FilterBySizeAndLetters();
 	void FillterByAnswerAndLetter(char letter, char ans);
 
+	char SuggestMostAverageLetter(); //suggest a letter 50/50
+	char SuggestMostCommonLetter(); //suggest most common letter
 
-	char SuggestLetter1(); //suggest a letter 50/50
-	char SuggestLetter2(); //suggest most common letter
-
-	private:
+private:
 	WordsManager* wordsManager;
 };

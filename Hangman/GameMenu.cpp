@@ -3,14 +3,18 @@
 #include "Console.h"
 #include "Constants.h"
 #include <iostream>
+#include "Messages.h"
+
+GameMenu::GameMenu()
+{
+}
 
 GameMenu::GameMenu(GameStarter* game_starter): game_starter(game_starter)
 {
 	this->menu_options = {
-		"Guess word", "Let computer guess your word"
+		Messages::GameMenuOption1, Messages::GameMenuOption2
 	};
 }
-
 
 GameMenu::~GameMenu()
 {
@@ -36,7 +40,7 @@ void GameMenu::Draw()
 
 	do
 	{
-		c = Console::ReadKey(); //todo check escape value
+		c = Console::ReadKey();
 
 		//catch if an arrow is passed
 		if (c == -32)
@@ -69,23 +73,19 @@ void GameMenu::Draw()
 	this->game_starter->Start(static_cast<GameType>(menuOption));
 }
 
-GameMenu::GameMenu()
-{
-}
-
 void GameMenu::DrawMenuOptions(int selectedOption)
 {
 	Console::Clear();
-	for (int i = 0; i < Constants::HangmanTitle.size(); i++)
+	for (int i = 0; i < Constants::HangmanTitleDrawing.size(); i++)
 	{
-		std::cout << Constants::HangmanTitle[i] << std::endl;
+		std::cout << Constants::HangmanTitleDrawing[i] << std::endl;
 	}
 	int num = 0;
 
 	for (int i = 0; i < this->menu_options.size(); ++i)
 	{
-		Console::SetCursorPosition(40, 15+i);
+		Console::SetCursorPosition(40, 15 + i);
 		(i == selectedOption) ? std::cout << "-->" : std::cout << "   ";
 		std::cout << ++num << ". " << this->menu_options[i] << std::endl;
-			}
+	}
 }

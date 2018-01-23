@@ -3,6 +3,10 @@
 #include <iostream>
 #include <algorithm>
 
+PlayerWordGuesser::~PlayerWordGuesser()
+{
+}
+
 PlayerWordGuesser::PlayerWordGuesser(std::string word, GameLevel game_level)
 {
 	this->word = word;
@@ -10,11 +14,6 @@ PlayerWordGuesser::PlayerWordGuesser(std::string word, GameLevel game_level)
 	std::string hidden(word.size(), WORD_GUESSER_HIDDEN_CHAR);
 	this->hidden_word = hidden;
 	this->mistakes = 0;
-}
-
-
-PlayerWordGuesser::~PlayerWordGuesser()
-{
 }
 
 void PlayerWordGuesser::Initialize(GameLevel level)

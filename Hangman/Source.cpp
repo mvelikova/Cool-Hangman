@@ -8,6 +8,5 @@ int main()
 	engine->Run();
 
 	delete engine;
-	system("pause");
 	return 0;
 }

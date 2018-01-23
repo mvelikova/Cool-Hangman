@@ -3,8 +3,6 @@
 #include "Constants.h"
 #include "Console.h"
 #include "Helpers.h"
-#include "WordsManager.h"
-#include <windows.h>
 #include "Messages.h"
 
 CpuGame::CpuGame(GameLevel game_level)
@@ -23,7 +21,7 @@ void CpuGame::Run()
 	BaseGame::Run();
 	Console::Clear();
 	int n;
-	std::cout << "Give the size of the word you're thinking of" << std::endl;
+	std::cout << Messages::GiveTheSizeOfTheWord << std::endl;
 	std::cin >> n;
 	std::string hidden(n, WORD_GUESSER_HIDDEN_CHAR);
 	guesser->SetHiddenWord(hidden);
@@ -43,7 +41,7 @@ void CpuGame::Run()
 	{
 		Console::Clear();
 
-		std::cout << "I WON!!!  YOU LOST !!!" << std::endl;
+		std::cout << Messages::CpuWon << std::endl;
 	}
 }
 
@@ -61,7 +59,7 @@ void CpuGame::Turn()
 	{
 		std::string lastWord = *Helpers::current_game_words.begin();
 		std::cout << "Is '" << lastWord << "' your word?" << std::endl;
-		std::cout << "Press y/n" << std::endl;
+		std::cout << Messages::PressYorN << std::endl;
 
 		char ans;
 		ans = Console::ReadKey();
@@ -83,11 +81,11 @@ void CpuGame::Turn()
 
 	//Suggest a letter 
 
-	char letter = guesser->SuggestLetter1();
+	char letter = guesser->SuggestMostAverageLetter();
 	//char letter = guesser->SuggestLetter2();
 
 	std::cout << "Is there a letter '" << letter << "' ?" << std::endl;
-	std::cout << "Press y/n" << std::endl;
+	std::cout << Messages::PressYorN << std::endl;
 
 	char ans;
 	ans = Console::ReadKey();
@@ -125,7 +123,7 @@ void CpuGame::GiveStartingLetters()
 {
 	if (this->game_level != GameLevel::Pro)
 	{
-		std::cout << "What's the first letter of your word" << std::endl;
+		std::cout << Messages::WhatsTheFirstLetter << std::endl;
 
 		char a;
 		a = Console::ReadKey();
@@ -135,7 +133,7 @@ void CpuGame::GiveStartingLetters()
 
 		if (this->game_level == GameLevel::Easy)
 		{
-			std::cout << "What's the last letter of your word" << std::endl;
+			std::cout << Messages::WhatsTheLastLetter << std::endl;
 			a = Console::ReadKey();
 			guesser->SetLetterInHiddenWord(guesser->GetHiddenWord().size() - 1, a);
 			guesser->AddLetterToUsed(a);
@@ -181,13 +179,13 @@ void CpuGame::SetCommonLetterInHiddenWord(char letter)
 			break;
 		case SPACE:
 			//set letter
-			if (guesser->GetHiddenWord()[idx] == '_')
+			if (guesser->GetHiddenWord()[idx] == WORD_GUESSER_HIDDEN_CHAR)
 			{
 				guesser->SetLetterInHiddenWord(idx, letter);
 			}
 			else if (guesser->GetHiddenWord()[idx] == letter)
 			{
-				guesser->SetLetterInHiddenWord(idx, '_');
+				guesser->SetLetterInHiddenWord(idx, WORD_GUESSER_HIDDEN_CHAR);
 			}
 
 			DrawPlayerWordGuesser(idx);

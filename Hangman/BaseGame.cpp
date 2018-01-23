@@ -4,6 +4,7 @@
 #include "Console.h"
 #include <conio.h>
 #include "Constants.h"
+#include "Messages.h"
 
 BaseGame::BaseGame(GameLevel game_level)
 {
@@ -92,7 +93,6 @@ void BaseGame::DrawHangman(int mistakes)
 	}
 	if (mistakes == 7)
 	{
-
 		DrawHangman(mistakes - 1);
 
 		int y = 25;
@@ -107,11 +107,11 @@ void BaseGame::DrawHangman(int mistakes)
 		Console::SetCursorPosition(44, 8);
 		std::cout << "X";
 		Console::SetCursorPosition(58, 8);
-		std::cout << "Yo Man R U DEAD?!?!!";
-	
+		std::cout << Messages::LoganMessage;
+
 		for (int i = 0; i < Constants::Logan.size(); i++)
 		{
-			Console::SetCursorPosition(58, 10+i);
+			Console::SetCursorPosition(58, 10 + i);
 			std::cout << Constants::Logan[i] << std::endl;
 		}
 	}
@@ -135,7 +135,7 @@ GameLevel BaseGame::PickLevel()
 {
 	Console::Clear();
 
-	
+
 	PrintLevels(GameLevel::Easy);
 
 	int menuOption = 0;
@@ -176,13 +176,13 @@ GameLevel BaseGame::PickLevel()
 void BaseGame::PrintLevels(const int current_selection = 0)
 {
 	Console::Clear();
-	for (int i = 0; i < Constants::HangmanTitle.size(); i++)
+	for (int i = 0; i < Constants::HangmanTitleDrawing.size(); i++)
 	{
-		std::cout << Constants::HangmanTitle[i] << std::endl;
+		std::cout << Constants::HangmanTitleDrawing[i] << std::endl;
 	}
 	for (int i = GameLevel::Easy; i != GameLevel::Pro + 1; i++)
 	{
-		Console::SetCursorPosition(45, 16+i);
+		Console::SetCursorPosition(45, 16 + i);
 
 		GameLevel foo = static_cast<GameLevel>(i);
 
