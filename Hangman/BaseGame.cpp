@@ -26,14 +26,14 @@ inline void BaseGame::Run()
 
 void BaseGame::DrawHangman(int mistakes)
 {
-	if (mistakes == 1)
+	if (mistakes > 0)
 	{
 		Console::SetCursorPosition(15, 38);
 		std::cout << Constants::Gibbet1[0];
 	}
-	if (mistakes == 2)
+	if (mistakes >1)
 	{
-		DrawHangman(mistakes - 1);
+		
 
 		int y = 37;
 		for (auto element : Constants::Gibbet2)
@@ -43,9 +43,9 @@ void BaseGame::DrawHangman(int mistakes)
 			y--;
 		}
 	}
-	if (mistakes == 3)
+	if (mistakes >2)
 	{
-		DrawHangman(mistakes - 1);
+		
 
 		int y = 2;
 		for (auto element : Constants::Gibbet3)
@@ -55,9 +55,8 @@ void BaseGame::DrawHangman(int mistakes)
 			y--;
 		}
 	}
-	if (mistakes == 4)
+	if (mistakes >3)
 	{
-		DrawHangman(mistakes - 1);
 
 		int y = 3;
 		for (auto element : Constants::Gibbet4)
@@ -67,9 +66,8 @@ void BaseGame::DrawHangman(int mistakes)
 			y++;
 		}
 	}
-	if (mistakes == 5)
+	if (mistakes>4)
 	{
-		DrawHangman(mistakes - 1);
 
 		int y = 5;
 		for (auto element : Constants::HangmanHead)
@@ -79,9 +77,8 @@ void BaseGame::DrawHangman(int mistakes)
 			y++;
 		}
 	}
-	if (mistakes == 6)
+	if (mistakes >5)
 	{
-		DrawHangman(mistakes - 1);
 
 		int y = 12;
 		for (auto element : Constants::HangmanHands)
@@ -91,9 +88,9 @@ void BaseGame::DrawHangman(int mistakes)
 			y++;
 		}
 	}
-	if (mistakes == 7)
+	if (mistakes>6)
 	{
-		DrawHangman(mistakes - 1);
+		
 
 		int y = 25;
 		for (auto element : Constants::HangmanLegs)
